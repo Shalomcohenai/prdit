@@ -36,6 +36,9 @@ export const metadata: Metadata = {
     description:
       "Building the future of specification-first development.",
   },
+  verification: {
+    google: "zkYLYVDNS-JxGpfhHUjL90n72lbQeDVEs436xKQ0Az4",
+  },
   robots: {
     index: true,
     follow: true,

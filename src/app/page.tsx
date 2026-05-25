@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, FileText, GitBranch, Workflow, MapPin, Building2 } from "lucide-react";
+import { ArrowRight, FileText, GitBranch, Workflow, MapPin } from "lucide-react";
 import { getAllNews } from "@/utils/content";
 import { products } from "@/lib/products";
 import { Button } from "@/components/ui/button";
@@ -149,13 +149,11 @@ export default function HomePage() {
               </div>
               <div className="relative">
                 <div className="aspect-video overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-neutral-900 to-neutral-800">
-                  <div className="flex h-full flex-col items-center justify-center gap-4 p-8">
-                    <Building2 className="h-16 w-16 text-neutral-600" />
-                    <div className="text-center">
-                      <p className="font-semibold text-neutral-400">Herzliya Offices</p>
-                      <p className="text-sm text-neutral-600">Innovation Hub &middot; Israel</p>
-                    </div>
-                  </div>
+                  <img
+                    src="/images/headquarters/office.jpg"
+                    alt="prd.it R&D Headquarters in Herzliya, Israel"
+                    className="h-full w-full object-cover"
+                  />
                 </div>
                 <div className="absolute -bottom-3 -right-3 h-full w-full rounded-2xl border border-white/5 -z-10" />
               </div>
