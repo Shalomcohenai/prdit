@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Post {
+  id               Int      @id @default(autoincrement())
+  title            String
+  slug             String   @unique
+  excerpt          String
+  content          String
+  category         String   @default("general")
+  targetProductCta String   @default("specifys")
+  publishedAt      DateTime @default(now())
+}
+
+model News {
+  id         Int      @id @default(autoincrement())
+  headline   String
+  content    String
+  location   String   @default("Herzliya")
+  datePosted DateTime @default(now())
+}
+
+model Job {
+  id           Int      @id @default(autoincrement())
+  title        String
+  department   String
+  location     String   @default("Herzliya")
+  description  String
+  requirements String
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+}
+
+model Inquiry {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  message   String
+  type      String   @default("general")
+  jobTitle  String?
+  resume    String?
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}

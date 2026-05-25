@@ -1,0 +1,236 @@
+"use server";
+
+import { cookies } from "next/headers";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+import { db } from "@/lib/db";
+
+const COOKIE_NAME = "admin_session";
+const COOKIE_VALUE = "authenticated";
+
+export async function login(formData: FormData) {
+  const password = formData.get("password") as string;
+  if (password === process.env.ADMIN_PASSWORD) {
+    const cookieStore = await cookies();
+    cookieStore.set(COOKIE_NAME, COOKIE_VALUE, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 60 * 60 * 24,
+      path: "/",
+    });
+    redirect("/admin");
+  }
+  return { error: "Invalid password" };
+}
+
+export async function logout() {
+  const cookieStore = await cookies();
+  cookieStore.delete(COOKIE_NAME);
+  redirect("/admin");
+}
+
+export async function isAuthenticated() {
+  const cookieStore = await cookies();
+  return cookieStore.get(COOKIE_NAME)?.value === COOKIE_VALUE;
+}
+
+// --- Posts ---
+
+export async function createPost(formData: FormData) {
+  const authed = await isAuthenticated();
+  if (!authed) redirect("/admin");
+
+  await db.post.create({
+    data: {
+      title: formData.get("title") as string,
+      slug: formData.get("slug") as string,
+      excerpt: formData.get("excerpt") as string,
+      content: formData.get("content") as string,
+      category: (formData.get("category") as string) || "general",
+      targetProductCta: (formData.get("targetProductCta") as string) || "specifys",
+    },
+  });
+
+  revalidatePath("/blog");
+  revalidatePath("/");
+  redirect("/admin");
+}
+
+export async function updatePost(formData: FormData) {
+  const authed = await isAuthenticated();
+  if (!authed) redirect("/admin");
+
+  const id = parseInt(formData.get("id") as string);
+  await db.post.update({
+    where: { id },
+    data: {
+      title: formData.get("title") as string,
+      slug: formData.get("slug") as string,
+      excerpt: formData.get("excerpt") as string,
+      content: formData.get("content") as string,
+      category: (formData.get("category") as string) || "general",
+      targetProductCta: (formData.get("targetProductCta") as string) || "specifys",
+    },
+  });
+
+  revalidatePath("/blog");
+  revalidatePath(`/blog/${formData.get("slug")}`);
+  revalidatePath("/");
+  redirect("/admin");
+}
+
+export async function deletePost(formData: FormData) {
+  const authed = await isAuthenticated();
+  if (!authed) redirect("/admin");
+
+  const id = parseInt(formData.get("id") as string);
+  const post = await db.post.findUnique({ where: { id } });
+  await db.post.delete({ where: { id } });
+
+  revalidatePath("/blog");
+  if (post) revalidatePath(`/blog/${post.slug}`);
+  revalidatePath("/");
+  redirect("/admin");
+}
+
+// --- News ---
+
+export async function createNews(formData: FormData) {
+  const authed = await isAuthenticated();
+  if (!authed) redirect("/admin");
+
+  await db.news.create({
+    data: {
+      headline: formData.get("headline") as string,
+      content: formData.get("content") as string,
+      location: (formData.get("location") as string) || "Herzliya",
+    },
+  });
+
+  revalidatePath("/");
+  redirect("/admin");
+}
+
+export async function updateNews(formData: FormData) {
+  const authed = await isAuthenticated();
+  if (!authed) redirect("/admin");
+
+  const id = parseInt(formData.get("id") as string);
+  await db.news.update({
+    where: { id },
+    data: {
+      headline: formData.get("headline") as string,
+      content: formData.get("content") as string,
+      location: (formData.get("location") as string) || "Herzliya",
+    },
+  });
+
+  revalidatePath("/");
+  redirect("/admin");
+}
+
+export async function deleteNews(formData: FormData) {
+  const authed = await isAuthenticated();
+  if (!authed) redirect("/admin");
+
+  const id = parseInt(formData.get("id") as string);
+  await db.news.delete({ where: { id } });
+
+  revalidatePath("/");
+  redirect("/admin");
+}
+
+// --- Jobs ---
+
+export async function createJob(formData: FormData) {
+  const authed = await isAuthenticated();
+  if (!authed) redirect("/admin");
+
+  await db.job.create({
+    data: {
+      title: formData.get("title") as string,
+      department: formData.get("department") as string,
+      location: (formData.get("location") as string) || "Herzliya",
+      description: formData.get("description") as string,
+      requirements: formData.get("requirements") as string,
+    },
+  });
+
+  revalidatePath("/careers");
+  redirect("/admin");
+}
+
+export async function updateJob(formData: FormData) {
+  const authed = await isAuthenticated();
+  if (!authed) redirect("/admin");
+
+  const id = parseInt(formData.get("id") as string);
+  await db.job.update({
+    where: { id },
+    data: {
+      title: formData.get("title") as string,
+      department: formData.get("department") as string,
+      location: (formData.get("location") as string) || "Herzliya",
+      description: formData.get("description") as string,
+      requirements: formData.get("requirements") as string,
+      active: formData.get("active") === "true",
+    },
+  });
+
+  revalidatePath("/careers");
+  redirect("/admin");
+}
+
+export async function deleteJob(formData: FormData) {
+  const authed = await isAuthenticated();
+  if (!authed) redirect("/admin");
+
+  const id = parseInt(formData.get("id") as string);
+  await db.job.delete({ where: { id } });
+
+  revalidatePath("/careers");
+  redirect("/admin");
+}
+
+// --- Inquiries ---
+
+export async function submitInquiry(formData: FormData) {
+  await db.inquiry.create({
+    data: {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      message: formData.get("message") as string,
+      type: (formData.get("type") as string) || "general",
+      jobTitle: (formData.get("jobTitle") as string) || null,
+      resume: (formData.get("resume") as string) || null,
+    },
+  });
+
+  revalidatePath("/admin");
+  return { success: true };
+}
+
+export async function markInquiryRead(formData: FormData) {
+  const authed = await isAuthenticated();
+  if (!authed) redirect("/admin");
+
+  const id = parseInt(formData.get("id") as string);
+  await db.inquiry.update({
+    where: { id },
+    data: { read: true },
+  });
+
+  revalidatePath("/admin");
+}
+
+export async function deleteInquiry(formData: FormData) {
+  const authed = await isAuthenticated();
+  if (!authed) redirect("/admin");
+
+  const id = parseInt(formData.get("id") as string);
+  await db.inquiry.delete({ where: { id } });
+
+  revalidatePath("/admin");
+  redirect("/admin");
+}
