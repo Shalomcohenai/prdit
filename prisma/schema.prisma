@@ -48,3 +48,17 @@ model Inquiry {
   read      Boolean  @default(false)
   createdAt DateTime @default(now())
 }
+
+model PageView {
+  id        Int      @id @default(autoincrement())
+  path      String
+  section   String
+  slug      String?
+  referrer  String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  @@index([section])
+  @@index([createdAt])
+  @@index([path])
+}

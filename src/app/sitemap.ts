@@ -8,12 +8,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await db.post.findMany({
     select: { slug: true, publishedAt: true },
     orderBy: { publishedAt: "desc" },
-  });
+  }).catch(() => [] as { slug: string; publishedAt: Date }[]);
 
   const jobs = await db.job.findMany({
     where: { active: true },
     select: { createdAt: true },
-  });
+  }).catch(() => [] as { createdAt: Date }[]);
 
   const staticPages: MetadataRoute.Sitemap = [
     {

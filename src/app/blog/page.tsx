@@ -19,9 +19,12 @@ const ctaLabels: Record<string, string> = {
 };
 
 export default async function BlogPage() {
-  const posts = await db.post.findMany({
-    orderBy: { publishedAt: "desc" },
-  });
+  let posts: Awaited<ReturnType<typeof db.post.findMany>> = [];
+  try {
+    posts = await db.post.findMany({
+      orderBy: { publishedAt: "desc" },
+    });
+  } catch {}
 
   return (
     <section className="py-24">

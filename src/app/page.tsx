@@ -16,10 +16,13 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export default async function HomePage() {
-  const news = await db.news.findMany({
-    orderBy: { datePosted: "desc" },
-    take: 3,
-  });
+  let news: Awaited<ReturnType<typeof db.news.findMany>> = [];
+  try {
+    news = await db.news.findMany({
+      orderBy: { datePosted: "desc" },
+      take: 3,
+    });
+  } catch {}
 
   return (
     <>

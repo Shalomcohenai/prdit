@@ -18,7 +18,10 @@ export async function generateMetadata({
   params: Params;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = await db.post.findUnique({ where: { slug } });
+  let post: Awaited<ReturnType<typeof db.post.findUnique>> = null;
+  try {
+    post = await db.post.findUnique({ where: { slug } });
+  } catch {}
   if (!post) return { title: "Not Found" };
 
   return {
@@ -39,7 +42,10 @@ export default async function BlogPostPage({
   params: Params;
 }) {
   const { slug } = await params;
-  const post = await db.post.findUnique({ where: { slug } });
+  let post: Awaited<ReturnType<typeof db.post.findUnique>> = null;
+  try {
+    post = await db.post.findUnique({ where: { slug } });
+  } catch {}
   if (!post) notFound();
 
   const ctaProduct = products.find((p) => p.id === post.targetProductCta);

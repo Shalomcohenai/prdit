@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { LogOut, Plus, Pencil, Trash2, FileText, Newspaper, Briefcase, Inbox, Mail, Eye, User } from "lucide-react";
+import { LogOut, Plus, Pencil, Trash2, FileText, Newspaper, Briefcase, Inbox, Mail, Eye, User, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { PostForm } from "./post-form";
 import { NewsForm } from "./news-form";
 import { JobForm } from "./job-form";
+import { AnalyticsDashboard } from "./analytics-dashboard";
 import {
   createPost, updatePost, deletePost,
   createNews, updateNews, deleteNews,
@@ -91,8 +92,11 @@ export function AdminDashboard({ posts, news, jobs, inquiries, logoutAction }: P
           </form>
         </div>
 
-        <Tabs defaultValue="posts">
+        <Tabs defaultValue="analytics">
           <TabsList className="mb-8">
+            <TabsTrigger value="analytics" className="gap-2">
+              <BarChart3 className="h-4 w-4" /> Analytics
+            </TabsTrigger>
             <TabsTrigger value="posts" className="gap-2">
               <FileText className="h-4 w-4" /> Posts ({posts.length})
             </TabsTrigger>
@@ -111,6 +115,11 @@ export function AdminDashboard({ posts, news, jobs, inquiries, logoutAction }: P
               )}
             </TabsTrigger>
           </TabsList>
+
+          {/* Analytics Tab */}
+          <TabsContent value="analytics">
+            <AnalyticsDashboard />
+          </TabsContent>
 
           {/* Posts Tab */}
           <TabsContent value="posts">

@@ -15,10 +15,13 @@ export const metadata: Metadata = {
 };
 
 export default async function CareersPage() {
-  const jobs = await db.job.findMany({
-    where: { active: true },
-    orderBy: { createdAt: "desc" },
-  });
+  let jobs: Awaited<ReturnType<typeof db.job.findMany>> = [];
+  try {
+    jobs = await db.job.findMany({
+      where: { active: true },
+      orderBy: { createdAt: "desc" },
+    });
+  } catch {}
 
   return (
     <>

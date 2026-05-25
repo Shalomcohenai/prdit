@@ -12,7 +12,7 @@ function createClient() {
   return new PrismaClient({ adapter });
 }
 
-if (globalForPrisma.prisma && !("inquiry" in globalForPrisma.prisma)) {
+if (globalForPrisma.prisma && !("pageView" in globalForPrisma.prisma)) {
   globalForPrisma.prisma = undefined;
 }
 

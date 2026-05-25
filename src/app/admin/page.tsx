@@ -17,10 +17,10 @@ export default async function AdminPage() {
   }
 
   const [posts, news, jobs, inquiries] = await Promise.all([
-    db.post.findMany({ orderBy: { publishedAt: "desc" } }),
-    db.news.findMany({ orderBy: { datePosted: "desc" } }),
-    db.job.findMany({ orderBy: { createdAt: "desc" } }),
-    db.inquiry.findMany({ orderBy: { createdAt: "desc" } }),
+    db.post.findMany({ orderBy: { publishedAt: "desc" } }).catch(() => []),
+    db.news.findMany({ orderBy: { datePosted: "desc" } }).catch(() => []),
+    db.job.findMany({ orderBy: { createdAt: "desc" } }).catch(() => []),
+    db.inquiry.findMany({ orderBy: { createdAt: "desc" } }).catch(() => []),
   ]);
 
   return (

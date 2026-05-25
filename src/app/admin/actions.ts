@@ -234,3 +234,133 @@ export async function deleteInquiry(formData: FormData) {
   revalidatePath("/admin");
   redirect("/admin");
 }
+
+// --- Analytics ---
+
+export type AnalyticsPeriod = "day" | "week" | "month";
+
+export interface SectionStats {
+  section: string;
+  count: number;
+}
+
+export interface TimeSeriesPoint {
+  label: string;
+  count: number;
+}
+
+export interface TopPage {
+  path: string;
+  section: string;
+  slug: string | null;
+  count: number;
+}
+
+export interface AnalyticsData {
+  totalViews: number;
+  sectionBreakdown: SectionStats[];
+  timeSeries: TimeSeriesPoint[];
+  topPages: TopPage[];
+  period: AnalyticsPeriod;
+}
+
+function getDateRange(period: AnalyticsPeriod): Date {
+  const now = new Date();
+  switch (period) {
+    case "day":
+      return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    case "week":
+      const weekStart = new Date(now);
+      weekStart.setDate(now.getDate() - 6);
+      weekStart.setHours(0, 0, 0, 0);
+      return weekStart;
+    case "month":
+      return new Date(now.getFullYear(), now.getMonth(), 1);
+  }
+}
+
+function buildTimeSeries(
+  views: { createdAt: Date }[],
+  period: AnalyticsPeriod
+): TimeSeriesPoint[] {
+  const buckets = new Map<string, number>();
+
+  if (period === "day") {
+    for (let h = 0; h < 24; h++) {
+      buckets.set(`${h.toString().padStart(2, "0")}:00`, 0);
+    }
+    for (const v of views) {
+      const hour = `${v.createdAt.getHours().toString().padStart(2, "0")}:00`;
+      buckets.set(hour, (buckets.get(hour) || 0) + 1);
+    }
+  } else if (period === "week") {
+    const now = new Date();
+    for (let i = 6; i >= 0; i--) {
+      const d = new Date(now);
+      d.setDate(now.getDate() - i);
+      const label = `${d.getDate().toString().padStart(2, "0")}/${(d.getMonth() + 1).toString().padStart(2, "0")}`;
+      buckets.set(label, 0);
+    }
+    for (const v of views) {
+      const label = `${v.createdAt.getDate().toString().padStart(2, "0")}/${(v.createdAt.getMonth() + 1).toString().padStart(2, "0")}`;
+      if (buckets.has(label)) {
+        buckets.set(label, (buckets.get(label) || 0) + 1);
+      }
+    }
+  } else {
+    const now = new Date();
+    const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+    for (let d = 1; d <= daysInMonth; d++) {
+      const label = `${d.toString().padStart(2, "0")}/${(now.getMonth() + 1).toString().padStart(2, "0")}`;
+      buckets.set(label, 0);
+    }
+    for (const v of views) {
+      const label = `${v.createdAt.getDate().toString().padStart(2, "0")}/${(v.createdAt.getMonth() + 1).toString().padStart(2, "0")}`;
+      if (buckets.has(label)) {
+        buckets.set(label, (buckets.get(label) || 0) + 1);
+      }
+    }
+  }
+
+  return Array.from(buckets.entries()).map(([label, count]) => ({ label, count }));
+}
+
+export async function getAnalytics(period: AnalyticsPeriod): Promise<AnalyticsData> {
+  const authed = await isAuthenticated();
+  if (!authed) redirect("/admin");
+
+  const since = getDateRange(period);
+
+  const views = await db.pageView.findMany({
+    where: { createdAt: { gte: since } },
+    orderBy: { createdAt: "asc" },
+  });
+
+  const totalViews = views.length;
+
+  const sectionMap = new Map<string, number>();
+  for (const v of views) {
+    sectionMap.set(v.section, (sectionMap.get(v.section) || 0) + 1);
+  }
+  const sectionBreakdown = Array.from(sectionMap.entries())
+    .map(([section, count]) => ({ section, count }))
+    .sort((a, b) => b.count - a.count);
+
+  const pathMap = new Map<string, { section: string; slug: string | null; count: number }>();
+  for (const v of views) {
+    const existing = pathMap.get(v.path);
+    if (existing) {
+      existing.count++;
+    } else {
+      pathMap.set(v.path, { section: v.section, slug: v.slug, count: 1 });
+    }
+  }
+  const topPages = Array.from(pathMap.entries())
+    .map(([path, data]) => ({ path, ...data }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 20);
+
+  const timeSeries = buildTimeSeries(views, period);
+
+  return { totalViews, sectionBreakdown, timeSeries, topPages, period };
+}

@@ -3,9 +3,9 @@ import { products } from "@/lib/products";
 import { comparisons } from "@/lib/comparisons";
 
 export async function GET() {
-  const posts = await db.post.findMany({ orderBy: { publishedAt: "desc" } });
-  const jobs = await db.job.findMany({ where: { active: true }, orderBy: { createdAt: "desc" } });
-  const news = await db.news.findMany({ orderBy: { datePosted: "desc" } });
+  const posts = await db.post.findMany({ orderBy: { publishedAt: "desc" } }).catch(() => []);
+  const jobs = await db.job.findMany({ where: { active: true }, orderBy: { createdAt: "desc" } }).catch(() => []);
+  const news = await db.news.findMany({ orderBy: { datePosted: "desc" } }).catch(() => []);
 
   const lines = [
     "# prd.it — Complete AI Discovery Document",
