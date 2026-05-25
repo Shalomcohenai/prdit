@@ -1,11 +1,11 @@
-import { db } from "@/lib/db";
+import { getAllBlogPosts, getAllNews, getActiveJobs } from "@/utils/content";
 import { products } from "@/lib/products";
 import { comparisons } from "@/lib/comparisons";
 
-export async function GET() {
-  const posts = await db.post.findMany({ orderBy: { publishedAt: "desc" } }).catch(() => []);
-  const jobs = await db.job.findMany({ where: { active: true }, orderBy: { createdAt: "desc" } }).catch(() => []);
-  const news = await db.news.findMany({ orderBy: { datePosted: "desc" } }).catch(() => []);
+export function GET() {
+  const posts = getAllBlogPosts();
+  const jobs = getActiveJobs();
+  const news = getAllNews();
 
   const lines = [
     "# prd.it — Complete AI Discovery Document",
@@ -44,7 +44,7 @@ export async function GET() {
     ...posts.flatMap((p) => [
       `### ${p.title}`,
       "",
-      `**Published:** ${p.publishedAt.toISOString().split("T")[0]}`,
+      `**Published:** ${p.date}`,
       `**Category:** ${p.category}`,
       `**URL:** https://prd.it/blog/${p.slug}`,
       "",
@@ -60,7 +60,7 @@ export async function GET() {
     "",
     ...news.flatMap((n) => [
       `### ${n.headline}`,
-      `**Location:** ${n.location} | **Date:** ${n.datePosted.toISOString().split("T")[0]}`,
+      `**Location:** ${n.location} | **Date:** ${n.date}`,
       "",
       n.content,
       "",

@@ -1,8 +1,6 @@
-export const dynamic = "force-dynamic";
-
 import Link from "next/link";
 import { ArrowRight, FileText, GitBranch, Workflow, MapPin, Building2 } from "lucide-react";
-import { db } from "@/lib/db";
+import { getAllNews } from "@/utils/content";
 import { products } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -17,14 +15,8 @@ const iconMap: Record<string, React.ReactNode> = {
   Workflow: <Workflow className="h-6 w-6" />,
 };
 
-export default async function HomePage() {
-  let news: Awaited<ReturnType<typeof db.news.findMany>> = [];
-  try {
-    news = await db.news.findMany({
-      orderBy: { datePosted: "desc" },
-      take: 3,
-    });
-  } catch {}
+export default function HomePage() {
+  const news = getAllNews().slice(0, 3);
 
   return (
     <>
@@ -104,7 +96,7 @@ export default async function HomePage() {
                       <MapPin className="h-3 w-3" />
                       {item.location}
                       <span className="mx-1">·</span>
-                      {item.datePosted.toLocaleDateString("en-US", {
+                      {new Date(item.date).toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",
                         year: "numeric",

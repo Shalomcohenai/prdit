@@ -1,10 +1,8 @@
-export const dynamic = "force-dynamic";
-
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Calendar, ExternalLink, Tag } from "lucide-react";
-import { db } from "@/lib/db";
+import { getAllBlogSlugs, getBlogPostBySlug } from "@/utils/content";
 import { products } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -14,16 +12,17 @@ import { MarkdownRenderer } from "@/components/markdown-renderer";
 
 type Params = Promise<{ slug: string }>;
 
+export function generateStaticParams() {
+  return getAllBlogSlugs().map((slug) => ({ slug }));
+}
+
 export async function generateMetadata({
   params,
 }: {
   params: Params;
 }): Promise<Metadata> {
   const { slug } = await params;
-  let post: Awaited<ReturnType<typeof db.post.findUnique>> = null;
-  try {
-    post = await db.post.findUnique({ where: { slug } });
-  } catch {}
+  const post = getBlogPostBySlug(slug);
   if (!post) return { title: "Not Found" };
 
   return {
@@ -33,7 +32,7 @@ export async function generateMetadata({
       title: post.title,
       description: post.excerpt,
       type: "article",
-      publishedTime: post.publishedAt.toISOString(),
+      publishedTime: new Date(post.date).toISOString(),
     },
   };
 }
@@ -44,17 +43,22 @@ export default async function BlogPostPage({
   params: Params;
 }) {
   const { slug } = await params;
-  let post: Awaited<ReturnType<typeof db.post.findUnique>> = null;
-  try {
-    post = await db.post.findUnique({ where: { slug } });
-  } catch {}
+  const post = getBlogPostBySlug(slug);
   if (!post) notFound();
 
-  const ctaProduct = products.find((p) => p.id === post.targetProductCta);
+  const ctaProduct = products.find((p) => p.id === post.targetProductCTA);
+
+  const articleData = {
+    title: post.title,
+    slug: post.slug,
+    excerpt: post.excerpt,
+    publishedAt: new Date(post.date),
+    content: post.content,
+  };
 
   return (
     <>
-      <JsonLd data={generateArticleSchema(post)} />
+      <JsonLd data={generateArticleSchema(articleData)} />
 
       <div className="py-24">
         <div className="mx-auto max-w-7xl px-6">
@@ -71,7 +75,7 @@ export default async function BlogPostPage({
                   <Badge variant="secondary">{post.category}</Badge>
                   <span className="flex items-center gap-1 text-xs text-neutral-500">
                     <Calendar className="h-3 w-3" />
-                    {post.publishedAt.toLocaleDateString("en-US", {
+                    {new Date(post.date).toLocaleDateString("en-US", {
                       month: "long",
                       day: "numeric",
                       year: "numeric",

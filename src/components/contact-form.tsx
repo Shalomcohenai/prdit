@@ -1,13 +1,12 @@
 "use client";
 
-import { useActionState } from "react";
+import { useState } from "react";
 import { Send, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { submitInquiry } from "@/app/admin/actions";
 
 interface ContactFormProps {
   type?: "general" | "application";
@@ -15,15 +14,28 @@ interface ContactFormProps {
 }
 
 export function ContactForm({ type = "general", jobTitle }: ContactFormProps) {
-  const [state, formAction, pending] = useActionState(
-    async (_prev: { success: boolean } | null, formData: FormData) => {
-      const result = await submitInquiry(formData);
-      return result ?? null;
-    },
-    null
-  );
+  const [submitted, setSubmitted] = useState(false);
 
-  if (state?.success) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    const mailto = `mailto:careers@prd.it?subject=${encodeURIComponent(
+      type === "application"
+        ? `Application: ${jobTitle ?? "Open Position"}`
+        : "General Inquiry"
+    )}&body=${encodeURIComponent(
+      `Name: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}${
+        data.get("resume") ? `\n\nResume:\n${data.get("resume")}` : ""
+      }`
+    )}`;
+
+    window.open(mailto, "_blank");
+    setSubmitted(true);
+  }
+
+  if (submitted) {
     return (
       <Card className="border-green-500/20 bg-green-500/5">
         <CardContent className="flex flex-col items-center gap-3 py-12 text-center">
@@ -54,7 +66,7 @@ export function ContactForm({ type = "general", jobTitle }: ContactFormProps) {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form action={formAction} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <input type="hidden" name="type" value={type} />
           {jobTitle && <input type="hidden" name="jobTitle" value={jobTitle} />}
 
@@ -98,8 +110,8 @@ export function ContactForm({ type = "general", jobTitle }: ContactFormProps) {
             </div>
           )}
 
-          <Button type="submit" variant="gradient" disabled={pending} className="w-full sm:w-auto">
-            {pending ? "Sending..." : type === "application" ? "Submit Application" : "Send Message"}
+          <Button type="submit" variant="gradient" className="w-full sm:w-auto">
+            {type === "application" ? "Submit Application" : "Send Message"}
             <Send className="h-4 w-4" />
           </Button>
         </form>

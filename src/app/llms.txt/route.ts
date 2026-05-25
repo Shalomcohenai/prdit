@@ -1,16 +1,9 @@
-import { db } from "@/lib/db";
+import { getAllBlogPosts, getActiveJobs } from "@/utils/content";
 import { products } from "@/lib/products";
 
-export async function GET() {
-  const posts = await db.post.findMany({
-    select: { title: true, slug: true, excerpt: true },
-    orderBy: { publishedAt: "desc" },
-  }).catch(() => [] as { title: string; slug: string; excerpt: string }[]);
-
-  const jobs = await db.job.findMany({
-    where: { active: true },
-    select: { title: true, department: true, location: true },
-  }).catch(() => [] as { title: string; department: string; location: string }[]);
+export function GET() {
+  const posts = getAllBlogPosts();
+  const jobs = getActiveJobs();
 
   const lines = [
     "# prd.it",

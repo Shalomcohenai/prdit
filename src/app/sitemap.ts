@@ -1,21 +1,10 @@
-export const dynamic = "force-dynamic";
-
 import type { MetadataRoute } from "next";
-import { db } from "@/lib/db";
+import { getAllBlogPosts } from "@/utils/content";
 import { comparisons } from "@/lib/comparisons";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://prd.it";
-
-  const posts = await db.post.findMany({
-    select: { slug: true, publishedAt: true },
-    orderBy: { publishedAt: "desc" },
-  }).catch(() => [] as { slug: string; publishedAt: Date }[]);
-
-  const jobs = await db.job.findMany({
-    where: { active: true },
-    select: { createdAt: true },
-  }).catch(() => [] as { createdAt: Date }[]);
+  const posts = getAllBlogPosts();
 
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -38,7 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${baseUrl}/careers`,
-      lastModified: jobs[0]?.createdAt ?? new Date(),
+      lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.7,
     },
@@ -46,7 +35,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: post.publishedAt,
+    lastModified: new Date(post.date),
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));

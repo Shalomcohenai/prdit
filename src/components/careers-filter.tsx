@@ -16,10 +16,10 @@ interface Job {
   location: string;
   description: string;
   requirements: string;
-  createdAt: string;
+  active: boolean;
 }
 
-const filters = ["All", "Herzliya", "San Francisco"] as const;
+const filters = ["All", "Herzliya, Israel", "San Francisco, USA"] as const;
 
 export function CareersFilter({ jobs }: { jobs: Job[] }) {
   const [activeFilter, setActiveFilter] = useState<string>("All");
@@ -81,12 +81,12 @@ export function CareersFilter({ jobs }: { jobs: Job[] }) {
                     <Badge
                       variant="outline"
                       className={cn(
-                        job.location === "Herzliya"
+                        job.location.startsWith("Herzliya")
                           ? "border-blue-500/30 text-blue-400"
                           : "border-purple-500/30 text-purple-400"
                       )}
                     >
-                      {job.location === "Herzliya" ? "Israel" : "USA"}
+                      {job.location.startsWith("Herzliya") ? "Israel" : "USA"}
                     </Badge>
                   </div>
                 </CardHeader>

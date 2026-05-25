@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
-import { PageTracker } from "@/components/page-tracker";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -58,7 +57,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="min-h-screen bg-black text-white antialiased">
-        <PageTracker />
         <Nav />
         <main className="pt-16">{children}</main>
         <Footer />

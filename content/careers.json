@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "title": "Senior Full-Stack Engineer",
+    "department": "Engineering",
+    "location": "Herzliya, Israel",
+    "description": "Join our core engineering team building the next generation of AI-powered developer tools. You will work across the entire stack — from database design to real-time UI — on products used by thousands of developers worldwide.",
+    "requirements": "5+ years of full-stack experience with TypeScript/React/Node.js. Strong understanding of database design (SQL and NoSQL). Experience with AI/ML integration is a plus. Familiarity with Next.js App Router and server-side rendering patterns.",
+    "active": true
+  },
+  {
+    "id": 2,
+    "title": "AI/ML Research Engineer",
+    "department": "Engineering",
+    "location": "Herzliya, Israel",
+    "description": "Drive the intelligence layer behind our product suite. Research and implement LLM-powered features for PRD generation, code analysis, and workflow automation. Collaborate with product and engineering to ship models into production.",
+    "requirements": "3+ years of ML engineering experience. Proficiency in Python and PyTorch/TensorFlow. Experience fine-tuning and deploying LLMs. Strong understanding of NLP and code generation techniques. Published research is a plus.",
+    "active": true
+  },
+  {
+    "id": 3,
+    "title": "Platform Engineer",
+    "department": "Engineering",
+    "location": "Herzliya, Israel",
+    "description": "Build and maintain the infrastructure that powers our products. Design scalable deployment pipelines, monitoring systems, and developer tooling. Own the reliability and performance of our production systems.",
+    "requirements": "4+ years of infrastructure/platform engineering experience. Expertise in Docker, Kubernetes, and CI/CD pipelines. Strong understanding of observability (logging, metrics, tracing). Experience with SQLite, PostgreSQL, or similar databases.",
+    "active": true
+  },
+  {
+    "id": 4,
+    "title": "Head of Growth Marketing",
+    "department": "Marketing",
+    "location": "San Francisco, USA",
+    "description": "Lead our growth strategy across all three product verticals. Own acquisition funnels, content marketing, SEO, and developer community engagement. Build and manage a high-performing growth team.",
+    "requirements": "7+ years of growth marketing experience in B2B SaaS. Proven track record of scaling developer-focused products. Deep understanding of SEO, content strategy, and programmatic marketing. Experience with PLG (product-led growth) models.",
+    "active": true
+  },
+  {
+    "id": 5,
+    "title": "Developer Relations Engineer",
+    "department": "Marketing",
+    "location": "San Francisco, USA",
+    "description": "Be the bridge between prd.it and the developer community. Create technical content, speak at conferences, build integrations, and gather feedback to shape our product roadmap. Represent prd.it at major industry events.",
+    "requirements": "3+ years of developer relations or developer advocacy experience. Strong technical background with ability to write code and build demos. Excellent public speaking and technical writing skills. Active presence in developer communities.",
+    "active": true
+  },
+  {
+    "id": 6,
+    "title": "Content & SEO Strategist",
+    "department": "Marketing",
+    "location": "San Francisco, USA",
+    "description": "Own the content engine that drives organic traffic to prd.it and its product ecosystem. Develop editorial strategy, manage the blog, optimize for search engines and AI discovery, and build topical authority in the AI developer tools space.",
+    "requirements": "4+ years of content marketing and SEO experience. Strong technical writing ability — you can explain complex developer concepts clearly. Experience with programmatic SEO and AI-optimized content. Familiarity with developer tools and AI/ML concepts.",
+    "active": true
+  }
+]

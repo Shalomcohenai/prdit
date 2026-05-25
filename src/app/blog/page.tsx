@@ -1,9 +1,7 @@
-export const dynamic = "force-dynamic";
-
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Calendar } from "lucide-react";
-import { db } from "@/lib/db";
+import { getAllBlogPosts } from "@/utils/content";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FadeInClient, StaggerClient, StaggerItemClient } from "@/components/home-animations";
@@ -20,13 +18,8 @@ const ctaLabels: Record<string, string> = {
   mcp: "Visual MCP",
 };
 
-export default async function BlogPage() {
-  let posts: Awaited<ReturnType<typeof db.post.findMany>> = [];
-  try {
-    posts = await db.post.findMany({
-      orderBy: { publishedAt: "desc" },
-    });
-  } catch {}
+export default function BlogPage() {
+  const posts = getAllBlogPosts();
 
   return (
     <section className="py-24">
@@ -48,7 +41,7 @@ export default async function BlogPage() {
 
         <StaggerClient className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => (
-            <StaggerItemClient key={post.id}>
+            <StaggerItemClient key={post.slug}>
               <Link href={`/blog/${post.slug}`}>
                 <Card className="group h-full transition-all duration-300 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]">
                   <CardHeader>
@@ -57,7 +50,7 @@ export default async function BlogPage() {
                         {post.category}
                       </Badge>
                       <Badge variant="outline" className="text-xs">
-                        {ctaLabels[post.targetProductCta] ?? post.targetProductCta}
+                        {ctaLabels[post.targetProductCTA] ?? post.targetProductCTA}
                       </Badge>
                     </div>
                     <CardTitle className="text-lg leading-snug text-white group-hover:text-blue-400 transition-colors">
@@ -71,7 +64,7 @@ export default async function BlogPage() {
                     <div className="flex items-center justify-between">
                       <span className="flex items-center gap-1 text-xs text-neutral-500">
                         <Calendar className="h-3 w-3" />
-                        {post.publishedAt.toLocaleDateString("en-US", {
+                        {new Date(post.date).toLocaleDateString("en-US", {
                           month: "short",
                           day: "numeric",
                           year: "numeric",

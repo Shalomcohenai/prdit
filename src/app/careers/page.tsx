@@ -1,12 +1,10 @@
-export const dynamic = "force-dynamic";
-
 import type { Metadata } from "next";
-import { MapPin, Briefcase, Building2 } from "lucide-react";
-import { db } from "@/lib/db";
+import { Building2 } from "lucide-react";
+import { getActiveJobs } from "@/utils/content";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { JsonLd, generateJobPostingSchema } from "@/utils/seo";
-import { FadeInClient, StaggerClient, StaggerItemClient } from "@/components/home-animations";
+import { FadeInClient } from "@/components/home-animations";
 import { CareersFilter } from "@/components/careers-filter";
 import { ContactForm } from "@/components/contact-form";
 
@@ -16,19 +14,21 @@ export const metadata: Metadata = {
     "Join prd.it — we're hiring engineers in Herzliya, Israel and growth roles in San Francisco, USA. Build the future of AI-powered developer tools.",
 };
 
-export default async function CareersPage() {
-  let jobs: Awaited<ReturnType<typeof db.job.findMany>> = [];
-  try {
-    jobs = await db.job.findMany({
-      where: { active: true },
-      orderBy: { createdAt: "desc" },
-    });
-  } catch {}
+export default function CareersPage() {
+  const jobs = getActiveJobs();
+
+  const jobsForSchema = jobs.map((job) => ({
+    title: job.title,
+    description: job.description,
+    location: job.location.split(",")[0],
+    department: job.department,
+    createdAt: new Date(),
+  }));
 
   return (
     <>
-      {jobs.map((job) => (
-        <JsonLd key={job.id} data={generateJobPostingSchema(job)} />
+      {jobsForSchema.map((job, i) => (
+        <JsonLd key={i} data={generateJobPostingSchema(job)} />
       ))}
 
       <section className="py-24">
@@ -75,7 +75,7 @@ export default async function CareersPage() {
             </div>
           </FadeInClient>
 
-          <CareersFilter jobs={JSON.parse(JSON.stringify(jobs))} />
+          <CareersFilter jobs={jobs} />
         </div>
       </section>
 
