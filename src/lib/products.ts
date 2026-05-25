@@ -42,7 +42,7 @@ export const products: Product[] = [
     name: "Rift Code",
     tagline: "Repository Intelligence & Visualization",
     description:
-      "An automated repository intelligence and visualization engine. It connects to GitHub to generate comprehensive visual structural maps, architecture trees, and perform high-precision, automated code reviews — drastically reducing onboarding and cognitive load on complex codebases.",
+      "An automated repository intelligence and visualization engine. It connects to GitHub to generate comprehensive visual structural maps, architecture trees, and perform high-precision, automated code reviews - drastically reducing onboarding and cognitive load on complex codebases.",
     url: "https://rift-code.com/",
     icon: "GitBranch",
     features: [

@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "prd.it — AI-Powered Product Engineering",
+    default: "prd.it - AI-Powered Product Engineering",
     template: "%s | prd.it",
   },
   description:
@@ -26,13 +26,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "prd.it",
-    title: "prd.it — AI-Powered Product Engineering",
+    title: "prd.it - AI-Powered Product Engineering",
     description:
       "Building the future of specification-first development with Specifys AI, Rift Code, and the Visual MCP Workflow Engine.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "prd.it — AI-Powered Product Engineering",
+    title: "prd.it - AI-Powered Product Engineering",
     description:
       "Building the future of specification-first development.",
   },

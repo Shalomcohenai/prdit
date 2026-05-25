@@ -34,7 +34,7 @@ export default function HomePage() {
                 Three Verticals. One Vision.
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-neutral-400">
-                From specification to visualization to deployment — our products cover the
+                From specification to visualization to deployment - our products cover the
                 entire AI-assisted development lifecycle.
               </p>
             </div>

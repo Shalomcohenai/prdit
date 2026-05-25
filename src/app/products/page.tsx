@@ -55,7 +55,7 @@ export default function ProductsPage() {
               </h1>
               <p className="mx-auto mt-6 max-w-2xl text-lg text-neutral-400">
                 Three specialized products that cover the complete AI-assisted
-                development lifecycle — from specification to deployment.
+                development lifecycle - from specification to deployment.
               </p>
             </div>
           </FadeInClient>

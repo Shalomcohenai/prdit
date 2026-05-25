@@ -25,7 +25,7 @@ export function GET() {
     ...posts.map((p) => `- [${p.title}](https://prd.it/blog/${p.slug}): ${p.excerpt}`),
     "",
     "## Open Positions",
-    ...jobs.map((j) => `- ${j.title} (${j.department}) — ${j.location}`),
+    ...jobs.map((j) => `- ${j.title} (${j.department}) - ${j.location}`),
     "",
     "## Learn More",
     "- Full details: https://prd.it/llms-full.txt",

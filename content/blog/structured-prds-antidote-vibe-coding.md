@@ -9,24 +9,24 @@ targetProductCTA: "specifys"
 
 ## The Vibe Coding Trap
 
-When teams jump straight from idea to implementation with AI code generators, they inherit a dangerous pattern: **vibe coding**. The LLM produces plausible-looking code that compiles, passes superficial review, and ships — only to collapse under real-world edge cases.
+When teams jump straight from idea to implementation with AI code generators, they inherit a dangerous pattern: **vibe coding**. The LLM produces plausible-looking code that compiles, passes superficial review, and ships - only to collapse under real-world edge cases.
 
 ### The Cost of Unstructured Generation
 
 Without a specification layer, AI-generated code lacks:
 
-- **Boundary definitions** — no clear contracts between modules
-- **Error taxonomy** — no systematic handling of failure modes  
-- **State machine awareness** — no explicit lifecycle modeling
+- **Boundary definitions** - no clear contracts between modules
+- **Error taxonomy** - no systematic handling of failure modes  
+- **State machine awareness** - no explicit lifecycle modeling
 
 ### Specification-First Development
 
 The solution is forcing a structured PRD phase *before* any code generation begins. A well-structured PRD captures:
 
-1. **System constraints** — performance budgets, security boundaries, data invariants
-2. **User flows** — complete journey maps with branching logic
-3. **API contracts** — typed interfaces with error responses
-4. **Architecture decisions** — explicit trade-off documentation
+1. **System constraints** - performance budgets, security boundaries, data invariants
+2. **User flows** - complete journey maps with branching logic
+3. **API contracts** - typed interfaces with error responses
+4. **Architecture decisions** - explicit trade-off documentation
 
 ### How Specifys AI Enforces Structure
 

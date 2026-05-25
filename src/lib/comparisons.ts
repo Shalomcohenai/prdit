@@ -25,7 +25,7 @@ export interface Comparison {
 export const comparisons: Comparison[] = [
   {
     slug: "specifys-vs-notion",
-    title: "Specifys AI vs Notion — PRD Generation Comparison",
+    title: "Specifys AI vs Notion - PRD Generation Comparison",
     metaDescription:
       "Compare Specifys AI and Notion for creating Product Requirements Documents. See why specification-first AI generation outperforms general-purpose docs.",
     ourProduct: {
@@ -62,14 +62,14 @@ export const comparisons: Comparison[] = [
       },
       {
         name: "General Document Editing",
-        ours: "Focused on specifications — not a general wiki tool",
+        ours: "Focused on specifications - not a general wiki tool",
         theirs: "Full-featured document editor with rich formatting and embeds",
         advantage: "theirs",
       },
       {
         name: "Validation & Completeness",
         ours: "Schema validation ensures every PRD section is complete before export",
-        theirs: "No validation — documents can be incomplete without warnings",
+        theirs: "No validation - documents can be incomplete without warnings",
         advantage: "ours",
       },
       {
@@ -84,7 +84,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "riftcode-vs-github-copilot",
-    title: "Rift Code vs GitHub Copilot — Code Intelligence Comparison",
+    title: "Rift Code vs GitHub Copilot - Code Intelligence Comparison",
     metaDescription:
       "Compare Rift Code and GitHub Copilot for code understanding and review. See how visual architecture maps complement AI code completion.",
     ourProduct: {
@@ -104,7 +104,7 @@ export const comparisons: Comparison[] = [
       {
         name: "Visual Architecture Maps",
         ours: "Interactive dependency graphs, file trees, and architecture visualizations",
-        theirs: "No architecture visualization — focused on inline suggestions",
+        theirs: "No architecture visualization - focused on inline suggestions",
         advantage: "ours",
       },
       {
@@ -115,7 +115,7 @@ export const comparisons: Comparison[] = [
       },
       {
         name: "AI Code Completion",
-        ours: "Not a code completion tool — focused on understanding, not writing",
+        ours: "Not a code completion tool - focused on understanding, not writing",
         theirs: "Best-in-class inline code suggestions and chat-based coding",
         advantage: "theirs",
       },
@@ -143,7 +143,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "mcp-vs-langchain",
-    title: "Visual MCP Engine vs LangChain — Workflow Automation Comparison",
+    title: "Visual MCP Engine vs LangChain - Workflow Automation Comparison",
     metaDescription:
       "Compare prd.it's Visual MCP Workflow Engine with LangChain for building AI developer workflows. Visual canvas vs code-first orchestration.",
     ourProduct: {
@@ -163,24 +163,24 @@ export const comparisons: Comparison[] = [
       {
         name: "Visual Workflow Builder",
         ours: "Drag-and-drop node canvas with real-time preview",
-        theirs: "Code-only — requires Python/TypeScript proficiency",
+        theirs: "Code-only - requires Python/TypeScript proficiency",
         advantage: "ours",
       },
       {
         name: "MCP Protocol Native",
         ours: "Built on the Model Context Protocol standard for universal tool connectivity",
-        theirs: "Custom integration patterns — not MCP-native",
+        theirs: "Custom integration patterns - not MCP-native",
         advantage: "ours",
       },
       {
         name: "IDE Deployment",
         ours: "Deploy directly to Cursor, Claude Desktop, and other local IDE environments",
-        theirs: "Primarily server-side deployment — not IDE-native",
+        theirs: "Primarily server-side deployment - not IDE-native",
         advantage: "ours",
       },
       {
         name: "Ecosystem Maturity",
-        ours: "Emerging product — building the ecosystem",
+        ours: "Emerging product - building the ecosystem",
         theirs: "Large community with extensive documentation and integrations",
         advantage: "theirs",
       },
@@ -192,12 +192,12 @@ export const comparisons: Comparison[] = [
       },
       {
         name: "Learning Curve",
-        ours: "Low — visual interface requires minimal coding knowledge",
-        theirs: "Moderate to high — requires understanding of framework abstractions",
+        ours: "Low - visual interface requires minimal coding knowledge",
+        theirs: "Moderate to high - requires understanding of framework abstractions",
         advantage: "ours",
       },
     ],
     verdict:
-      "LangChain is powerful for teams with deep Python expertise who want maximum flexibility. The Visual MCP Engine is designed for teams that want to build AI workflows visually and deploy them directly into their IDE — no framework knowledge required.",
+      "LangChain is powerful for teams with deep Python expertise who want maximum flexibility. The Visual MCP Engine is designed for teams that want to build AI workflows visually and deploy them directly into their IDE - no framework knowledge required.",
   },
 ];

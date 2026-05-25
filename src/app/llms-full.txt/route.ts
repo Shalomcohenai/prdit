@@ -8,7 +8,7 @@ export function GET() {
   const news = getAllNews();
 
   const lines = [
-    "# prd.it — Complete AI Discovery Document",
+    "# prd.it - Complete AI Discovery Document",
     "",
     "## About prd.it",
     "",

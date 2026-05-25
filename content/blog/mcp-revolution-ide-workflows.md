@@ -15,9 +15,9 @@ The Model Context Protocol (MCP) is an open standard for connecting AI models to
 
 Traditional AI integrations require custom glue code for every tool connection. MCP standardizes this with:
 
-- **Typed tool definitions** — structured schemas for every capability
-- **Context injection** — seamless data flow from sources to models
-- **Composable workflows** — chain multiple tools into pipelines
+- **Typed tool definitions** - structured schemas for every capability
+- **Context injection** - seamless data flow from sources to models
+- **Composable workflows** - chain multiple tools into pipelines
 
 ### The Visual Workflow Paradigm
 

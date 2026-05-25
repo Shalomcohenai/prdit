@@ -4,7 +4,7 @@
     "title": "Senior Full-Stack Engineer",
     "department": "Engineering",
     "location": "Herzliya, Israel",
-    "description": "Join our core engineering team building the next generation of AI-powered developer tools. You will work across the entire stack — from database design to real-time UI — on products used by thousands of developers worldwide.",
+    "description": "Join our core engineering team building the next generation of AI-powered developer tools. You will work across the entire stack - from database design to real-time UI - on products used by thousands of developers worldwide.",
     "requirements": "5+ years of full-stack experience with TypeScript/React/Node.js. Strong understanding of database design (SQL and NoSQL). Experience with AI/ML integration is a plus. Familiarity with Next.js App Router and server-side rendering patterns.",
     "active": true
   },
@@ -50,7 +50,7 @@
     "department": "Marketing",
     "location": "San Francisco, USA",
     "description": "Own the content engine that drives organic traffic to prd.it and its product ecosystem. Develop editorial strategy, manage the blog, optimize for search engines and AI discovery, and build topical authority in the AI developer tools space.",
-    "requirements": "4+ years of content marketing and SEO experience. Strong technical writing ability — you can explain complex developer concepts clearly. Experience with programmatic SEO and AI-optimized content. Familiarity with developer tools and AI/ML concepts.",
+    "requirements": "4+ years of content marketing and SEO experience. Strong technical writing ability - you can explain complex developer concepts clearly. Experience with programmatic SEO and AI-optimized content. Familiarity with developer tools and AI/ML concepts.",
     "active": true
   }
 ]

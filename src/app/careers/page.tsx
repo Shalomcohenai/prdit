@@ -11,7 +11,7 @@ import { ContactForm } from "@/components/contact-form";
 export const metadata: Metadata = {
   title: "Careers",
   description:
-    "Join prd.it — we're hiring engineers in Herzliya, Israel and growth roles in San Francisco, USA. Build the future of AI-powered developer tools.",
+    "Join prd.it - we're hiring engineers in Herzliya, Israel and growth roles in San Francisco, USA. Build the future of AI-powered developer tools.",
 };
 
 export default function CareersPage() {

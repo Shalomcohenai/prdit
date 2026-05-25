@@ -13,7 +13,7 @@ Modern codebases are growing exponentially. A typical SaaS product now spans hun
 
 ### The Problem with Text-Based Navigation
 
-Traditional code navigation tools — grep, IDE search, file trees — force developers to build mental models from sequential text scanning. This is fundamentally inefficient for understanding *relationships* between components.
+Traditional code navigation tools - grep, IDE search, file trees - force developers to build mental models from sequential text scanning. This is fundamentally inefficient for understanding *relationships* between components.
 
 ### Visual Architecture as a Solution
 
