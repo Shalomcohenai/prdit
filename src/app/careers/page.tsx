@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import type { Metadata } from "next";
 import { MapPin, Briefcase, Building2 } from "lucide-react";
 import { db } from "@/lib/db";

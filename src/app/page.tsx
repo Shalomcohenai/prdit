@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import Link from "next/link";
 import { ArrowRight, FileText, GitBranch, Workflow, MapPin, Building2 } from "lucide-react";
 import { db } from "@/lib/db";
