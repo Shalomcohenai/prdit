@@ -45,8 +45,8 @@ export function HeroSection() {
           transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
           className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-neutral-400 sm:text-xl"
         >
-          From structured PRDs to visual code intelligence to MCP workflow
-          automation - prd.it builds the tools that make AI-assisted development
+          From structured PRDs to visual code intelligence to live generative
+          blueprints - prd.it builds the tools that make AI-assisted development
           actually work.
         </motion.p>
 

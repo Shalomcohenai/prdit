@@ -4,7 +4,7 @@ slug: "mcp-revolution-ide-workflows"
 excerpt: "Understanding the Model Context Protocol and how visual workflow builders are reshaping developer tooling."
 date: "2026-05-10"
 category: "ai-tooling"
-targetProductCTA: "mcp"
+targetProductCTA: "greenprd"
 ---
 
 ## What is MCP?

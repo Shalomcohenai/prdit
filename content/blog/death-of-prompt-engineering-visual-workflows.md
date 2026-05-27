@@ -4,7 +4,7 @@ slug: "death-of-prompt-engineering-visual-workflows"
 excerpt: "Prompt engineering is a transitional skill. The future of AI-assisted development is visual workflow composition - drawing logic, not writing instructions. Here is why the shift is inevitable."
 date: "2026-05-20"
 category: "AI Strategy"
-targetProductCTA: "mcp"
+targetProductCTA: "greenprd"
 ---
 
 ## Introduction: The Prompt Engineering Bubble
@@ -112,13 +112,13 @@ In a visual workflow world, developers focus on:
 
 This is higher-value work than crafting text prompts. It requires engineering judgment, systems thinking, and architectural expertise - skills that are harder to automate and more valuable to organizations.
 
-## Building the Visual MCP Future at prd.it
+## Building the Visual PRD Future at prd.it
 
-At **prd.it**, we are building the Visual MCP Workflow Engine - a canvas-based interface for composing, previewing, and deploying AI workflows. Instead of writing prompt chains in text or editing JSON configuration files, you design your AI workflow spatially and the engine handles the rest.
+At **prd.it**, we are building **GreenPRD** - a live generative workspace where you describe an app idea in plain English and instantly receive a full specification via a 7-stage AI pipeline. Instead of crafting prompt chains or editing JSON configuration files, you work across three bidirectionally-synced surfaces - a visual graph canvas, Markdown panels, and downloadable code scaffolding - and the engine keeps everything in sync.
 
-The vision: **every developer workflow that currently requires prompt engineering or manual MCP configuration will be expressible as a visual graph**. From code review automation to documentation generation to deployment pipelines - all composed on a canvas, all deployed directly to your IDE.
+The vision: **every product concept that currently requires weeks of manual specification will be expressible as a synchronized, interactive blueprint**. From screen flows to database schemas to deployment architectures - all composed on a canvas, all synced to Markdown and code, all accessible via MCP from your IDE.
 
-**Prompt engineering is a transitional skill. Visual workflow composition is the interface AI-assisted development deserves.** Explore our product roadmap at [prd.it/products](/products) and join the beta of the Visual MCP Workflow Engine.
+**Prompt engineering is a transitional skill. Structured generative specification is the interface AI-assisted development deserves.** Explore GreenPRD at [greenprd.com](https://greenprd.com) - your first project is free, no credit card required.
 
 ## Key Takeaways
 
@@ -127,4 +127,4 @@ The vision: **every developer workflow that currently requires prompt engineerin
 - The shift from text to visual interfaces is one of the most consistent patterns in computing history
 - MCP provides the protocol layer; visual builders provide the interface layer; IDE integration provides the deployment layer
 - The human role shifts from instruction writing to architecture design - higher-value, harder to automate
-- prd.it is building a Visual MCP Workflow Engine for canvas-based AI workflow composition
+- prd.it is building GreenPRD - a live generative workspace for crafting actionable blueprints from a single prompt

@@ -1,33 +1,23 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  ExternalLink,
-  FileText,
-  GitBranch,
-  Workflow,
-  Check,
-} from "lucide-react";
+import { ArrowRight, ExternalLink, Check } from "lucide-react";
 import { products } from "@/lib/products";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   JsonLd,
   generateSoftwareApplicationSchema,
 } from "@/utils/seo";
-import { FadeInClient, StaggerClient, StaggerItemClient } from "@/components/home-animations";
+import { FadeInClient } from "@/components/home-animations";
+import { ProductScreenshots } from "@/components/product-screenshots";
+import { ProductIcon } from "@/components/product-icon";
 
 export const metadata: Metadata = {
   title: "Products",
   description:
-    "Explore prd.it's product ecosystem: Specifys AI for PRD generation, Rift Code for repository intelligence, and the Visual MCP Workflow Engine.",
-};
-
-const iconMap: Record<string, React.ReactNode> = {
-  FileText: <FileText className="h-8 w-8" />,
-  GitBranch: <GitBranch className="h-8 w-8" />,
-  Workflow: <Workflow className="h-8 w-8" />,
+    "Explore prd.it's product ecosystem: Specifys AI for PRD generation, Rift Code for repository intelligence, and GreenPRD for live generative blueprints.",
 };
 
 export default function ProductsPage() {
@@ -66,10 +56,21 @@ export default function ProductsPage() {
                 <Card className="overflow-hidden border-white/5">
                   <div className="grid md:grid-cols-2">
                     <div className="p-8 md:p-12">
-                      <div
-                        className={`mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${product.gradient} text-white`}
-                      >
-                        {iconMap[product.icon]}
+                      <div className="mb-6 flex items-center gap-4">
+                        <div className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-white/5 p-2.5">
+                          <ProductIcon
+                            src={product.images.icon}
+                            alt={`${product.name} icon`}
+                            size="lg"
+                          />
+                        </div>
+                        <Image
+                          src={product.images.logo}
+                          alt={`${product.name} logo`}
+                          width={160}
+                          height={48}
+                          className="h-10 w-auto object-contain object-left"
+                        />
                       </div>
                       <Badge variant="secondary" className="mb-3">
                         {product.tagline}
@@ -98,11 +99,28 @@ export default function ProductsPage() {
                             {product.ctaLabel}
                           </Button>
                         )}
-                        <Link href={`/compare/${product.id === "specifys" ? "specifys-vs-notion" : product.id === "riftcode" ? "riftcode-vs-github-copilot" : "mcp-vs-langchain"}`}>
+                        <Link href={`/compare/${product.id === "specifys" ? "specifys-vs-notion" : product.id === "riftcode" ? "riftcode-vs-github-copilot" : product.id === "greenprd" ? "mcp-vs-langchain" : "mcp-vs-langchain"}`}>
                           <Button variant="outline" size="lg">
                             Compare <ArrowRight className="h-4 w-4" />
                           </Button>
                         </Link>
+                      </div>
+
+                      <div className="mt-10">
+                        <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-neutral-500">
+                          Tech Specs
+                        </h3>
+                        <div className="flex flex-wrap gap-2">
+                          {product.techSpecs.map((spec) => (
+                            <Badge
+                              key={spec}
+                              variant="outline"
+                              className="text-xs"
+                            >
+                              {spec}
+                            </Badge>
+                          ))}
+                        </div>
                       </div>
                     </div>
 
@@ -123,22 +141,18 @@ export default function ProductsPage() {
                           ))}
                         </ul>
                       </div>
-                      <div>
-                        <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-neutral-500">
-                          Tech Specs
-                        </h3>
-                        <div className="flex flex-wrap gap-2">
-                          {product.techSpecs.map((spec) => (
-                            <Badge
-                              key={spec}
-                              variant="outline"
-                              className="text-xs"
-                            >
-                              {spec}
-                            </Badge>
-                          ))}
+
+                      {product.screenshots.length > 0 && (
+                        <div className="mb-8">
+                          <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-neutral-500">
+                            Product Preview
+                          </h3>
+                          <ProductScreenshots
+                            screenshots={product.screenshots}
+                            productName={product.name}
+                          />
                         </div>
-                      </div>
+                      )}
                     </div>
                   </div>
                 </Card>

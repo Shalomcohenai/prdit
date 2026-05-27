@@ -21,7 +21,7 @@ export function ContactForm({ type = "general", jobTitle }: ContactFormProps) {
     const form = e.currentTarget;
     const data = new FormData(form);
 
-    const mailto = `mailto:careers@prd.it?subject=${encodeURIComponent(
+    const mailto = `mailto:about@prd.it.com?subject=${encodeURIComponent(
       type === "application"
         ? `Application: ${jobTitle ?? "Open Position"}`
         : "General Inquiry"

@@ -4,7 +4,7 @@ slug: "what-is-model-context-protocol-mcp"
 excerpt: "A comprehensive technical guide to the Model Context Protocol - how it connects AI models to external tools, why it matters for developers, and how visual MCP builders are reshaping IDE workflows."
 date: "2026-05-21"
 category: "AI Tooling"
-targetProductCTA: "mcp"
+targetProductCTA: "greenprd"
 ---
 
 ## Introduction: The Integration Problem in AI-Powered Development
@@ -123,21 +123,21 @@ Despite its elegance, MCP has a practical problem: **configuration is manual and
 
 This is especially painful for teams where every developer needs the same MCP setup. There is no visual interface, no drag-and-drop configuration, and no way to preview how servers interact before deploying them.
 
-## The Future: Visual MCP Workflow Builders
+## The Future: MCP-Native Generative Workspaces
 
-The next evolution of MCP tooling is **visual workflow composition**. Instead of writing JSON configuration files, developers will:
+The next evolution of MCP tooling is **generative specification workspaces with native MCP integration**. Instead of manually wiring JSON configurations, product builders will:
 
-1. **Drag and drop** tool nodes onto a visual canvas
-2. **Draw connections** between data sources, processing steps, and output targets
-3. **Configure servers** through form interfaces instead of raw JSON
-4. **Preview execution** in real-time before deploying to their IDE
-5. **Share workflows** with team members through exportable configurations
+1. **Describe an app idea** in plain English and receive a full specification instantly
+2. **Visualize architecture** on an interactive graph canvas mapping screens, databases, and integrations
+3. **Edit specifications** across three bidirectionally-synced surfaces - canvas, Markdown, and code scaffolding
+4. **Connect their IDE** via a native MCP server so AI agents can read and update specs directly
+5. **Share workspaces** with team members through collaborative production Workspaces
 
-This visual approach eliminates configuration errors, makes MCP accessible to non-expert developers, and enables rapid prototyping of complex AI workflows.
+This approach eliminates specification drift, makes structured context accessible to AI agents, and enables rapid prototyping before writing a single line of code.
 
-At **prd.it**, we are building exactly this - a Visual MCP Workflow Engine that lets you compose, preview, and deploy MCP configurations through an intuitive canvas interface. Instead of editing JSON files and debugging stdio connections, you design your AI workflow visually and the engine generates the correct configuration for Cursor, Claude Desktop, or any MCP-compatible host.
+At **prd.it**, we are building exactly this with **GreenPRD** (greenprd.com) - a live generative workspace that turns a brief prompt into a comprehensive PRD via a 7-stage AI pipeline. Any change on the visual canvas, Markdown panels, or code scaffolding syncs bidirectionally across all surfaces. A native MCP server lets tools like Cursor, Windsurf, and Claude Desktop read and update your specification directly from the IDE.
 
-**Configuring MCP servers manually in JSON is tedious and error-prone. Join the beta of our Visual MCP Engine at [prd.it/products](/products) - design your AI workflow on a visual canvas, and the system deploys the configuration directly to your IDE.**
+**Configuring MCP servers manually in JSON is tedious. Try [GreenPRD](https://greenprd.com) - describe your idea, get a full spec, and let your AI agent access it natively via MCP. Your first project is free.**
 
 ## Key Takeaways
 
@@ -146,4 +146,4 @@ At **prd.it**, we are building exactly this - a Visual MCP Workflow Engine that 
 - MCP eliminates custom integration code and enables composable AI workflows
 - The ecosystem includes servers for filesystems, GitHub, databases, browsers, and more
 - Manual JSON configuration is the current bottleneck - visual workflow builders are the next evolution
-- prd.it is building a Visual MCP Workflow Engine for drag-and-drop MCP configuration
+- prd.it is building GreenPRD - a live generative PRD workspace with native MCP server integration

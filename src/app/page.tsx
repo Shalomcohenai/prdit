@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, FileText, GitBranch, Workflow, MapPin } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import { getAllNews } from "@/utils/content";
 import { products } from "@/lib/products";
 import { Button } from "@/components/ui/button";
@@ -7,13 +7,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { JsonLd, generateOrganizationSchema } from "@/utils/seo";
 import { HeroSection } from "@/components/hero";
-import { FadeInClient, StaggerClient, StaggerItemClient } from "@/components/home-animations";
-
-const iconMap: Record<string, React.ReactNode> = {
-  FileText: <FileText className="h-6 w-6" />,
-  GitBranch: <GitBranch className="h-6 w-6" />,
-  Workflow: <Workflow className="h-6 w-6" />,
-};
+import {
+  FadeInClient,
+  ScrollReveal,
+  ScrollRevealIcon,
+  StaggerClient,
+  StaggerItemClient,
+} from "@/components/home-animations";
+import { ImageGallery } from "@/components/image-gallery";
+import { ProductIcon } from "@/components/product-icon";
 
 export default function HomePage() {
   const news = getAllNews().slice(0, 3);
@@ -25,36 +27,43 @@ export default function HomePage() {
       <HeroSection />
 
       {/* Product Teasers */}
-      <section className="relative py-24">
+      <section id="ecosystem" className="relative py-24">
         <div className="mx-auto max-w-7xl px-6">
-          <FadeInClient>
+          <ScrollReveal>
             <div className="text-center">
               <Badge variant="outline" className="mb-4">Our Ecosystem</Badge>
               <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
                 Three Verticals. One Vision.
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-neutral-400">
-                From specification to visualization to deployment - our products cover the
-                entire AI-assisted development lifecycle.
+                From specification to visualization to live generative blueprints - our
+                products cover the entire AI-assisted development lifecycle.
               </p>
             </div>
-          </FadeInClient>
+          </ScrollReveal>
 
           <StaggerClient className="mt-16 grid gap-6 md:grid-cols-3">
             {products.map((product) => (
               <StaggerItemClient key={product.id}>
                 <Card className="group relative h-full overflow-hidden transition-all duration-300 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]">
-                  <CardHeader>
-                    <div className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br ${product.gradient} text-white`}>
-                      {iconMap[product.icon]}
-                    </div>
-                    <CardTitle className="text-xl text-white">{product.name}</CardTitle>
-                    <p className="text-sm text-neutral-400">{product.tagline}</p>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="mb-6 text-sm leading-relaxed text-neutral-400">
-                      {product.description.slice(0, 150)}...
+                  <CardHeader className="items-center space-y-5 text-center">
+                    <ScrollRevealIcon className="flex w-full justify-center">
+                      <div className="flex items-center gap-3">
+                        <ProductIcon
+                          src={product.images.icon}
+                          alt={`${product.name} icon`}
+                          size="lg"
+                        />
+                        <CardTitle className="text-xl text-white sm:text-2xl">
+                          {product.name}
+                        </CardTitle>
+                      </div>
+                    </ScrollRevealIcon>
+                    <p className="text-base font-semibold leading-relaxed text-neutral-100 sm:text-lg">
+                      {product.homeSummary}
                     </p>
+                  </CardHeader>
+                  <CardContent className="flex justify-center">
                     <Link href="/products">
                       <Button variant="outline" size="sm" className="group-hover:border-white/30">
                         Learn More <ArrowRight className="h-3 w-3" />
@@ -148,13 +157,14 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="relative">
-                <div className="aspect-video overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-neutral-900 to-neutral-800">
-                  <img
-                    src="/images/headquarters/office.jpg"
-                    alt="prd.it R&D Headquarters in Herzliya, Israel"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
+                <ImageGallery
+                  images={[
+                    { src: "/images/headquarters/office.jpg", alt: "prd.it R&D Headquarters in Herzliya, Israel" },
+                    { src: "/images/headquarters/office-2.jpg", alt: "prd.it office workspace" },
+                    { src: "/images/headquarters/office-3.jpg", alt: "prd.it team collaboration space" },
+                  ]}
+                  interval={5000}
+                />
                 <div className="absolute -bottom-3 -right-3 h-full w-full rounded-2xl border border-white/5 -z-10" />
               </div>
             </div>

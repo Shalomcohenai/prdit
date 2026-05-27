@@ -2,9 +2,15 @@ export interface Product {
   id: string;
   name: string;
   tagline: string;
+  homeSummary: string;
   description: string;
   url: string;
-  icon: string;
+  images: {
+    icon: string;
+    logo: string;
+    banner: string;
+  };
+  screenshots: string[];
   features: string[];
   techSpecs: string[];
   ctaLabel: string;
@@ -16,10 +22,21 @@ export const products: Product[] = [
     id: "specifys",
     name: "Specifys AI",
     tagline: "Specification-First PRD Generation",
+    homeSummary: "The market-leading tool for structured software planning and PRDs.",
     description:
       "An advanced AI-powered platform tailored for creating production-ready Product Requirements Documents (PRDs) and software architecture specifications. It prevents the common 'vibe coding patchwork trap' by forcing structured, LLM-optimized logic and system constraints before any code generation begins.",
     url: "https://specifys-ai.com/",
-    icon: "FileText",
+    images: {
+      icon: "/images/products/specifys/icon.png",
+      logo: "/images/products/specifys/logo.png",
+      banner: "/images/products/specifys/banner.png",
+    },
+    screenshots: [
+      "/images/products/specifys/screenshot-1.png",
+      "/images/products/specifys/screenshot-2.png",
+      "/images/products/specifys/screenshot-3.png",
+      "/images/products/specifys/screenshot-4.png",
+    ],
     features: [
       "Guided specification workflows",
       "LLM-optimized PRD schemas",
@@ -41,10 +58,21 @@ export const products: Product[] = [
     id: "riftcode",
     name: "Rift Code",
     tagline: "Repository Intelligence & Visualization",
+    homeSummary: "See any repository as an interactive visual map.",
     description:
       "An automated repository intelligence and visualization engine. It connects to GitHub to generate comprehensive visual structural maps, architecture trees, and perform high-precision, automated code reviews - drastically reducing onboarding and cognitive load on complex codebases.",
     url: "https://rift-code.com/",
-    icon: "GitBranch",
+    images: {
+      icon: "/images/products/riftcode/icon.svg",
+      logo: "/images/products/riftcode/logo.png",
+      banner: "/images/products/riftcode/banner.png",
+    },
+    screenshots: [
+      "/images/products/riftcode/screenshot-1.png",
+      "/images/products/riftcode/screenshot-2.png",
+      "/images/products/riftcode/screenshot-3.png",
+      "/images/products/riftcode/screenshot-4.png",
+    ],
     features: [
       "Visual architecture mapping",
       "Dependency graph rendering",
@@ -63,28 +91,34 @@ export const products: Product[] = [
     gradient: "from-purple-500 to-pink-500",
   },
   {
-    id: "mcp",
-    name: "Visual MCP Workflow Engine",
-    tagline: "Next-Gen Model Context Protocol Tooling",
+    id: "greenprd",
+    name: "GreenPRD",
+    tagline: "From Vibe to Actionable Blueprint",
+    homeSummary: "Turn a brief idea into a production-ready PRD in minutes.",
     description:
-      "A next-generation Model Context Protocol (MCP) tooling ecosystem. It features a rich, node-based visual canvas where developers draw out software engineering workflows, data models, and logic gates. The system automatically injects, mutates, and deploys these architectures directly into local IDE environments in real-time.",
-    url: "/products",
-    icon: "Workflow",
+      "A live generative workspace for crafting comprehensive Product Requirement Documents. Describe your app idea with a brief prompt and instantly receive a production-ready specification via a 7-stage AI pipeline - Overview, Technology, Market, Design, Architecture, Visuals, and Prompts. The core breakthrough is bidirectional synchronization across three parallel surfaces: an interactive visual graph canvas, engineering-grade Markdown panels, and a downloadable code scaffolding ZIP. Any change on any surface flows seamlessly to all others via a centralized state-delta pipeline.",
+    url: "https://greenprd.com",
+    images: {
+      icon: "/images/products/mcp/icon.png",
+      logo: "/images/products/mcp/logo.png",
+      banner: "/images/products/mcp/banner.png",
+    },
+    screenshots: [],
     features: [
-      "Visual node-based canvas",
-      "Drag-and-drop workflow builder",
-      "Real-time IDE deployment",
-      "MCP protocol native",
-      "Composable tool chains",
-      "Cursor & Claude Desktop support",
+      "7-stage AI generation pipeline",
+      "Interactive visual graph canvas (React Flow)",
+      "Bidirectional triple-surface sync",
+      "Engineering-grade Markdown specifications",
+      "Downloadable code scaffolding (ZIP)",
+      "Native MCP server for Cursor & Claude Desktop",
     ],
     techSpecs: [
-      "MCP standard compliance",
-      "Typed tool definitions",
-      "Context injection pipeline",
-      "Live preview execution",
+      "Bidirectional state-delta pipeline",
+      "React Flow visual canvas",
+      "MCP protocol server integration",
+      "Token-based consumption ledger",
     ],
-    ctaLabel: "Coming Soon",
-    gradient: "from-orange-500 to-red-500",
+    ctaLabel: "Try GreenPRD",
+    gradient: "from-emerald-500 to-green-500",
   },
 ];

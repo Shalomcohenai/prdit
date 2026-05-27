@@ -143,61 +143,61 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "mcp-vs-langchain",
-    title: "Visual MCP Engine vs LangChain - Workflow Automation Comparison",
+    title: "GreenPRD vs LangChain - Generative PRD Workspace vs Code-First Framework",
     metaDescription:
-      "Compare prd.it's Visual MCP Workflow Engine with LangChain for building AI developer workflows. Visual canvas vs code-first orchestration.",
+      "Compare GreenPRD's live generative PRD workspace with LangChain. Visual canvas and bidirectional sync vs code-first orchestration for AI-assisted development.",
     ourProduct: {
-      name: "Visual MCP Engine",
-      id: "mcp",
-      url: "/products",
+      name: "GreenPRD",
+      id: "greenprd",
+      url: "https://greenprd.com",
     },
     competitor: {
       name: "LangChain",
       description:
         "A code-first framework for building applications with language models.",
     },
-    headline: "Visual Workflow Canvas vs Code-First Framework",
+    headline: "Live Generative PRD Workspace vs Code-First Framework",
     subheadline:
-      "LangChain requires deep coding expertise. The Visual MCP Engine lets you build workflows by drawing them.",
+      "LangChain requires deep coding expertise. GreenPRD lets you go from vibe to actionable blueprint with a single prompt.",
     features: [
       {
-        name: "Visual Workflow Builder",
-        ours: "Drag-and-drop node canvas with real-time preview",
+        name: "Visual Canvas",
+        ours: "Interactive graph mapping screens, database tables, workflows, and integrations - with bidirectional sync to text and code",
         theirs: "Code-only - requires Python/TypeScript proficiency",
         advantage: "ours",
       },
       {
-        name: "MCP Protocol Native",
-        ours: "Built on the Model Context Protocol standard for universal tool connectivity",
+        name: "MCP Server Integration",
+        ours: "Native MCP server lets Cursor, Windsurf, and Claude Desktop read and update specs directly from the IDE",
         theirs: "Custom integration patterns - not MCP-native",
         advantage: "ours",
       },
       {
-        name: "IDE Deployment",
-        ours: "Deploy directly to Cursor, Claude Desktop, and other local IDE environments",
-        theirs: "Primarily server-side deployment - not IDE-native",
+        name: "PRD Generation",
+        ours: "7-stage AI pipeline generates a full specification from a single prompt - Overview, Technology, Market, Design, Architecture, Visuals, and Prompts",
+        theirs: "No built-in specification generation - focused on LLM orchestration",
         advantage: "ours",
       },
       {
         name: "Ecosystem Maturity",
-        ours: "Emerging product - building the ecosystem",
+        ours: "Growing platform with free tier and token-based usage",
         theirs: "Large community with extensive documentation and integrations",
         advantage: "theirs",
       },
       {
-        name: "Composability",
-        ours: "Visual tool chaining with typed connections between nodes",
+        name: "Triple-Surface Sync",
+        ours: "Bidirectional sync across visual canvas, Markdown panels, and code scaffolding ZIP",
         theirs: "Powerful chain/agent composition through code abstractions",
-        advantage: "tie",
+        advantage: "ours",
       },
       {
         name: "Learning Curve",
-        ours: "Low - visual interface requires minimal coding knowledge",
+        ours: "Low - describe your idea in plain English and get a full spec",
         theirs: "Moderate to high - requires understanding of framework abstractions",
         advantage: "ours",
       },
     ],
     verdict:
-      "LangChain is powerful for teams with deep Python expertise who want maximum flexibility. The Visual MCP Engine is designed for teams that want to build AI workflows visually and deploy them directly into their IDE - no framework knowledge required.",
+      "LangChain is powerful for teams with deep Python expertise who want maximum flexibility in LLM orchestration. GreenPRD is designed for founders, product managers, and vibe coders who need a structured, synchronized specification before writing a single line of code.",
   },
 ];

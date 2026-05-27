@@ -4,10 +4,11 @@ import { Separator } from "@/components/ui/separator";
 const productLinks = [
   { href: "https://specifys-ai.com/", label: "Specifys AI" },
   { href: "https://rift-code.com/", label: "Rift Code" },
-  { href: "/products", label: "Visual MCP Engine" },
+  { href: "https://greenprd.com", label: "GreenPRD" },
 ];
 
 const companyLinks = [
+  { href: "/about", label: "About" },
   { href: "/blog", label: "Blog" },
   { href: "/careers", label: "Careers" },
   { href: "/admin", label: "Admin" },
@@ -16,7 +17,7 @@ const companyLinks = [
 const compareLinks = [
   { href: "/compare/specifys-vs-notion", label: "Specifys vs Notion" },
   { href: "/compare/riftcode-vs-github-copilot", label: "Rift Code vs Copilot" },
-  { href: "/compare/mcp-vs-langchain", label: "MCP vs LangChain" },
+  { href: "/compare/mcp-vs-langchain", label: "GreenPRD vs LangChain" },
 ];
 
 export function Footer() {
@@ -34,6 +35,12 @@ export function Footer() {
             <div className="mt-4 flex flex-col gap-1 text-xs text-neutral-500">
               <span>R&D HQ: Herzliya, Israel</span>
               <span>Growth: San Francisco, USA</span>
+              <a
+                href="mailto:about@prd.it.com"
+                className="mt-2 text-neutral-400 transition-colors hover:text-white"
+              >
+                about@prd.it.com
+              </a>
             </div>
           </div>
 
@@ -94,6 +101,9 @@ export function Footer() {
             &copy; {new Date().getFullYear()} prd.it. All rights reserved.
           </p>
           <div className="flex gap-6">
+            <Link href="/about" className="text-xs text-neutral-500 transition-colors hover:text-neutral-300">
+              About
+            </Link>
             <Link href="/blog" className="text-xs text-neutral-500 transition-colors hover:text-neutral-300">
               Insights
             </Link>

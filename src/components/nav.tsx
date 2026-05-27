@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 
 const links = [
   { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
   { href: "/products", label: "Products" },
   { href: "/blog", label: "Blog" },
   { href: "/careers", label: "Careers" },
@@ -41,6 +42,12 @@ export function Nav() {
               {link.label}
             </Link>
           ))}
+          <a
+            href="mailto:about@prd.it.com"
+            className="ml-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-500"
+          >
+            Contact
+          </a>
         </div>
 
         <button
@@ -70,6 +77,13 @@ export function Nav() {
                 {link.label}
               </Link>
             ))}
+            <a
+              href="mailto:about@prd.it.com"
+              onClick={() => setMobileOpen(false)}
+              className="block rounded-lg bg-blue-600 px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-500"
+            >
+              Contact
+            </a>
           </div>
         </div>
       )}

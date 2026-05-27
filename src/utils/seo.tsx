@@ -24,7 +24,7 @@ export function generateOrganizationSchema() {
     url: "https://prd.it",
     logo: "https://prd.it/logo.png",
     description:
-      "A global AI and product engineering company operating at the intersection of product specification, code intelligence, and IDE workflow automation.",
+      "A global AI and product engineering company operating at the intersection of product specification, code intelligence, and live generative PRD workspaces.",
     foundingDate: "2024",
     address: [
       {
@@ -41,7 +41,7 @@ export function generateOrganizationSchema() {
         description: "Growth Office",
       },
     ],
-    sameAs: ["https://specifys-ai.com/", "https://rift-code.com/"],
+    sameAs: ["https://specifys-ai.com/", "https://rift-code.com/", "https://greenprd.com"],
   };
 }
 
@@ -110,6 +110,7 @@ export function generateSoftwareApplicationSchema(product: Product) {
     name: product.name,
     description: product.description,
     url: product.url.startsWith("http") ? product.url : `https://prd.it${product.url}`,
+    image: `https://prd.it${product.images.banner}`,
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Web",
     offers: {

@@ -98,6 +98,8 @@ export function GET() {
     "- Website: https://prd.it",
     "- Specifys AI: https://specifys-ai.com/",
     "- Rift Code: https://rift-code.com/",
+    "- GreenPRD: https://greenprd.com",
+    "- About: https://prd.it/about",
     "- Careers: https://prd.it/careers",
     "- Blog: https://prd.it/blog",
     "- Sitemap: https://prd.it/sitemap.xml",

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 const ctaLabels: Record<string, string> = {
   specifys: "Specifys AI",
   riftcode: "Rift Code",
-  mcp: "Visual MCP",
+  greenprd: "GreenPRD",
 };
 
 export default function BlogPage() {

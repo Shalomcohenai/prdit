@@ -9,7 +9,7 @@ const blogDir = path.join(contentDir, "blog");
 // Types
 // ---------------------------------------------------------------------------
 
-export type TargetProductCTA = "specifys" | "riftcode" | "mcp";
+export type TargetProductCTA = "specifys" | "riftcode" | "greenprd";
 
 export interface BlogPost {
   title: string;
