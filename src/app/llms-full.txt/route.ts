@@ -1,6 +1,7 @@
 import { getAllBlogPosts, getAllNews, getActiveJobs } from "@/utils/content";
 import { products } from "@/lib/products";
 import { comparisons } from "@/lib/comparisons";
+import { SITE_URL } from "@/lib/site";
 
 export function GET() {
   const posts = getAllBlogPosts();
@@ -25,7 +26,7 @@ export function GET() {
       `### ${p.name}`,
       "",
       `**Tagline:** ${p.tagline}`,
-      `**URL:** ${p.url.startsWith("http") ? p.url : "https://prd.it" + p.url}`,
+      `**URL:** ${p.url.startsWith("http") ? p.url : SITE_URL + p.url}`,
       "",
       p.description,
       "",
@@ -46,7 +47,7 @@ export function GET() {
       "",
       `**Published:** ${p.date}`,
       `**Category:** ${p.category}`,
-      `**URL:** https://prd.it/blog/${p.slug}`,
+      `**URL:** ${SITE_URL}/blog/${p.slug}`,
       "",
       p.excerpt,
       "",
@@ -86,7 +87,7 @@ export function GET() {
     "",
     ...comparisons.flatMap((c) => [
       `### ${c.title}`,
-      `**URL:** https://prd.it/compare/${c.slug}`,
+      `**URL:** ${SITE_URL}/compare/${c.slug}`,
       "",
       c.verdict,
       "",
@@ -95,14 +96,14 @@ export function GET() {
     "---",
     "",
     "## Contact & Links",
-    "- Website: https://prd.it",
+    `- Website: ${SITE_URL}`,
     "- Specifys AI: https://specifys-ai.com/",
     "- Rift Code: https://rift-code.com/",
     "- GreenPRD: https://greenprd.com",
-    "- About: https://prd.it/about",
-    "- Careers: https://prd.it/careers",
-    "- Blog: https://prd.it/blog",
-    "- Sitemap: https://prd.it/sitemap.xml",
+    `- About: ${SITE_URL}/about`,
+    `- Careers: ${SITE_URL}/careers`,
+    `- Blog: ${SITE_URL}/blog`,
+    `- Sitemap: ${SITE_URL}/sitemap.xml`,
   ];
 
   return new Response(lines.join("\n"), {

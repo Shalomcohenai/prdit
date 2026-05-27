@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
 import { getAllBlogPosts } from "@/utils/content";
 import { comparisons } from "@/lib/comparisons";
+import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://prd.it";
+  const baseUrl = SITE_URL;
   const posts = getAllBlogPosts();
 
   const staticPages: MetadataRoute.Sitemap = [

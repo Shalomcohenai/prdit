@@ -1,4 +1,5 @@
 import type { Product } from "@/lib/products";
+import { SITE_URL } from "@/lib/site";
 
 interface ArticleData {
   title: string;
@@ -21,8 +22,8 @@ export function generateOrganizationSchema() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "prd.it",
-    url: "https://prd.it",
-    logo: "https://prd.it/logo.png",
+    url: SITE_URL,
+    logo: `${SITE_URL}/logo.png`,
     description:
       "A global AI and product engineering company operating at the intersection of product specification, code intelligence, and live generative PRD workspaces.",
     foundingDate: "2024",
@@ -51,26 +52,26 @@ export function generateArticleSchema(article: ArticleData) {
     "@type": "Article",
     headline: article.title,
     description: article.excerpt,
-    url: `https://prd.it/blog/${article.slug}`,
+    url: `${SITE_URL}/blog/${article.slug}`,
     datePublished: article.publishedAt.toISOString(),
     dateModified: article.publishedAt.toISOString(),
     author: {
       "@type": "Organization",
       name: "prd.it",
-      url: "https://prd.it",
+      url: SITE_URL,
     },
     publisher: {
       "@type": "Organization",
       name: "prd.it",
-      url: "https://prd.it",
+      url: SITE_URL,
       logo: {
         "@type": "ImageObject",
-        url: "https://prd.it/logo.png",
+        url: `${SITE_URL}/logo.png`,
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://prd.it/blog/${article.slug}`,
+      "@id": `${SITE_URL}/blog/${article.slug}`,
     },
   };
 }
@@ -85,8 +86,8 @@ export function generateJobPostingSchema(job: JobData) {
     hiringOrganization: {
       "@type": "Organization",
       name: "prd.it",
-      sameAs: "https://prd.it",
-      logo: "https://prd.it/logo.png",
+      sameAs: SITE_URL,
+      logo: `${SITE_URL}/logo.png`,
     },
     jobLocation: {
       "@type": "Place",
@@ -109,8 +110,8 @@ export function generateSoftwareApplicationSchema(product: Product) {
     "@type": "SoftwareApplication",
     name: product.name,
     description: product.description,
-    url: product.url.startsWith("http") ? product.url : `https://prd.it${product.url}`,
-    image: `https://prd.it${product.images.banner}`,
+    url: product.url.startsWith("http") ? product.url : `${SITE_URL}${product.url}`,
+    image: `${SITE_URL}${product.images.banner}`,
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Web",
     offers: {
@@ -121,7 +122,7 @@ export function generateSoftwareApplicationSchema(product: Product) {
     author: {
       "@type": "Organization",
       name: "prd.it",
-      url: "https://prd.it",
+      url: SITE_URL,
     },
   };
 }

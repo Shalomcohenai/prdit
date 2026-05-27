@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
   },
   description:
     "prd.it is a global AI and product engineering company building specification-first developer tools. Explore Specifys AI, Rift Code, and GreenPRD.",
-  metadataBase: new URL("https://prd.it"),
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     type: "website",
     locale: "en_US",

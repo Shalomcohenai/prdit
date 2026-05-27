@@ -1,5 +1,6 @@
 import { getAllBlogPosts, getActiveJobs } from "@/utils/content";
 import { products } from "@/lib/products";
+import { SITE_URL } from "@/lib/site";
 
 export function GET() {
   const posts = getAllBlogPosts();
@@ -11,25 +12,25 @@ export function GET() {
     "> AI-powered product engineering company building specification-first developer tools.",
     "",
     "## Company",
-    "- Website: https://prd.it",
+    `- Website: ${SITE_URL}`,
     "- HQ: Herzliya, Israel (R&D)",
     "- Office: San Francisco, USA (Growth)",
     "",
     "## Products",
     ...products.map(
       (p) =>
-        `- ${p.name}: ${p.tagline}. ${p.url.startsWith("http") ? p.url : "https://prd.it" + p.url}`
+        `- ${p.name}: ${p.tagline}. ${p.url.startsWith("http") ? p.url : SITE_URL + p.url}`
     ),
     "",
     "## Blog Articles",
-    ...posts.map((p) => `- [${p.title}](https://prd.it/blog/${p.slug}): ${p.excerpt}`),
+    ...posts.map((p) => `- [${p.title}](${SITE_URL}/blog/${p.slug}): ${p.excerpt}`),
     "",
     "## Open Positions",
     ...jobs.map((j) => `- ${j.title} (${j.department}) - ${j.location}`),
     "",
     "## Learn More",
-    "- Full details: https://prd.it/llms-full.txt",
-    "- Sitemap: https://prd.it/sitemap.xml",
+    `- Full details: ${SITE_URL}/llms-full.txt`,
+    `- Sitemap: ${SITE_URL}/sitemap.xml`,
   ];
 
   return new Response(lines.join("\n"), {
