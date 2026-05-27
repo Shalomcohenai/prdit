@@ -74,7 +74,9 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="min-h-screen bg-black text-white antialiased">
+      <body
+        className={`${geistSans.className} min-h-screen bg-black font-sans text-white antialiased`}
+      >
         <Nav />
         <main className="pt-16">{children}</main>
         <Footer />

@@ -45,7 +45,7 @@ export default function HomePage() {
           <StaggerClient className="mt-16 grid gap-6 md:grid-cols-3">
             {products.map((product) => (
               <StaggerItemClient key={product.id}>
-                <Card className="group relative h-full overflow-hidden transition-all duration-300 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+                <Card className="group relative h-full overflow-hidden font-sans transition-all duration-300 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]">
                   <CardHeader className="items-center space-y-5 text-center">
                     <ScrollRevealIcon className="flex w-full justify-center">
                       <div className="flex items-center gap-3">
@@ -54,18 +54,22 @@ export default function HomePage() {
                           alt={`${product.name} icon`}
                           size="lg"
                         />
-                        <CardTitle className="text-xl text-white sm:text-2xl">
+                        <CardTitle className="text-xl font-bold tracking-tight text-white sm:text-2xl">
                           {product.name}
                         </CardTitle>
                       </div>
                     </ScrollRevealIcon>
-                    <p className="text-base font-semibold leading-relaxed text-neutral-100 sm:text-lg">
+                    <p className="text-base font-medium leading-relaxed tracking-tight text-neutral-300 sm:text-lg">
                       {product.homeSummary}
                     </p>
                   </CardHeader>
-                  <CardContent className="flex justify-center">
+                  <CardContent className="flex justify-center font-sans">
                     <Link href="/products">
-                      <Button variant="outline" size="sm" className="group-hover:border-white/30">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="font-sans tracking-tight group-hover:border-white/30"
+                      >
                         Learn More <ArrowRight className="h-3 w-3" />
                       </Button>
                     </Link>
