@@ -95,7 +95,7 @@ export const products: Product[] = [
     name: "GreenPRD",
     tagline: "Edit Visually, Not in Chat",
     homeSummary:
-      "Shape your product on a visual canvas—specs and scaffolding update automatically, without re-prompting an AI chat for every change.",
+      "Shape your product on a visual canvas - specs and scaffolding update automatically, without re-prompting an AI chat for every change.",
     description:
       "GreenPRD is a live generative workspace that turns a brief idea into a production-ready PRD through a 7-stage AI pipeline. Unlike typical AI builders, you do not keep rewriting changes in chat. Edit flows, screens, and logic directly on an interactive visual canvas—drag components, reconnect nodes, refine structure—and the specification, Markdown panels, and code scaffolding update to match. Bidirectional sync keeps the graph, engineering-grade docs, and downloadable ZIP aligned through a single state-delta pipeline, so what you see on the canvas is what your build reflects.",
     url: "https://greenprd.com",
