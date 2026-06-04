@@ -93,23 +93,29 @@ export const products: Product[] = [
   {
     id: "greenprd",
     name: "GreenPRD",
-    tagline: "From Vibe to Actionable Blueprint",
-    homeSummary: "Turn a brief idea into a production-ready PRD in minutes.",
+    tagline: "Edit Visually, Not in Chat",
+    homeSummary:
+      "Shape your product on a visual canvas—specs and scaffolding update automatically, without re-prompting an AI chat for every change.",
     description:
-      "A live generative workspace for crafting comprehensive Product Requirement Documents. Describe your app idea with a brief prompt and instantly receive a production-ready specification via a 7-stage AI pipeline - Overview, Technology, Market, Design, Architecture, Visuals, and Prompts. The core breakthrough is bidirectional synchronization across three parallel surfaces: an interactive visual graph canvas, engineering-grade Markdown panels, and a downloadable code scaffolding ZIP. Any change on any surface flows seamlessly to all others via a centralized state-delta pipeline.",
+      "GreenPRD is a live generative workspace that turns a brief idea into a production-ready PRD through a 7-stage AI pipeline. Unlike typical AI builders, you do not keep rewriting changes in chat. Edit flows, screens, and logic directly on an interactive visual canvas—drag components, reconnect nodes, refine structure—and the specification, Markdown panels, and code scaffolding update to match. Bidirectional sync keeps the graph, engineering-grade docs, and downloadable ZIP aligned through a single state-delta pipeline, so what you see on the canvas is what your build reflects.",
     url: "https://greenprd.com",
     images: {
       icon: "/images/products/mcp/icon.png",
       logo: "/images/products/mcp/logo.png",
       banner: "/images/products/mcp/banner.png",
     },
-    screenshots: [],
+    screenshots: [
+      "/images/products/mcp/screenshot-1.png",
+      "/images/products/mcp/screenshot-2.png",
+      "/images/products/mcp/screenshot-3.png",
+      "/images/products/mcp/screenshot-4.png",
+    ],
     features: [
+      "Visual editing instead of endless chat re-prompts",
       "7-stage AI generation pipeline",
-      "Interactive visual graph canvas (React Flow)",
-      "Bidirectional triple-surface sync",
+      "Interactive graph canvas (React Flow)",
+      "Bidirectional sync: canvas, Markdown, and code ZIP",
       "Engineering-grade Markdown specifications",
-      "Downloadable code scaffolding (ZIP)",
       "Native MCP server for Cursor & Claude Desktop",
     ],
     techSpecs: [

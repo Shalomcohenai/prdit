@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ExternalLink, Check } from "lucide-react";
 import { products } from "@/lib/products";
@@ -56,20 +55,11 @@ export default function ProductsPage() {
                 <Card className="overflow-hidden border-white/5">
                   <div className="grid md:grid-cols-2">
                     <div className="p-8 md:p-12">
-                      <div className="mb-6 flex items-center gap-4">
-                        <div className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-white/5 p-2.5">
-                          <ProductIcon
-                            src={product.images.icon}
-                            alt={`${product.name} icon`}
-                            size="lg"
-                          />
-                        </div>
-                        <Image
-                          src={product.images.logo}
-                          alt={`${product.name} logo`}
-                          width={160}
-                          height={48}
-                          className="h-10 w-auto object-contain object-left"
+                      <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-white/5 p-2.5">
+                        <ProductIcon
+                          src={product.images.icon}
+                          alt={`${product.name} icon`}
+                          size="lg"
                         />
                       </div>
                       <Badge variant="secondary" className="mb-3">
