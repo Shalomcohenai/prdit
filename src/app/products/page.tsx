@@ -55,16 +55,18 @@ export default function ProductsPage() {
                 <Card className="overflow-hidden border-white/5">
                   <div className="grid md:grid-cols-2">
                     <div className="p-8 md:p-12">
-                      <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-white/5 p-2.5">
-                        <ProductIcon
-                          src={product.images.icon}
-                          alt={`${product.name} icon`}
-                          size="lg"
-                        />
+                      <div className="mb-4 flex items-center justify-between gap-4">
+                        <div className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white/5 p-2.5">
+                          <ProductIcon
+                            src={product.images.icon}
+                            alt={`${product.name} icon`}
+                            size="lg"
+                          />
+                        </div>
+                        <h3 className="text-end text-lg font-semibold leading-snug tracking-tight text-neutral-300 sm:text-xl">
+                          {product.tagline}
+                        </h3>
                       </div>
-                      <Badge variant="secondary" className="mb-3">
-                        {product.tagline}
-                      </Badge>
                       <h2 className="text-3xl font-bold tracking-tight text-white">
                         {product.name}
                       </h2>
