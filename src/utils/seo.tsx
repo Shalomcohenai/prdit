@@ -23,7 +23,7 @@ export function generateOrganizationSchema() {
     "@type": "Organization",
     name: "prd.it",
     url: SITE_URL,
-    logo: `${SITE_URL}/logo.png`,
+    logo: `${SITE_URL}/apple-icon`,
     description:
       "A global AI and product engineering company operating at the intersection of product specification, code intelligence, and live generative PRD workspaces.",
     foundingDate: "2024",
@@ -66,7 +66,7 @@ export function generateArticleSchema(article: ArticleData) {
       url: SITE_URL,
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/logo.png`,
+        url: `${SITE_URL}/apple-icon`,
       },
     },
     mainEntityOfPage: {
@@ -87,7 +87,7 @@ export function generateJobPostingSchema(job: JobData) {
       "@type": "Organization",
       name: "prd.it",
       sameAs: SITE_URL,
-      logo: `${SITE_URL}/logo.png`,
+      logo: `${SITE_URL}/apple-icon`,
     },
     jobLocation: {
       "@type": "Place",

@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   title: "Products",
   description:
     "Explore prd.it's product ecosystem: Specifys AI for PRD generation, Rift Code for repository intelligence, and GreenPRD for live generative blueprints.",
+  alternates: {
+    canonical: "/products",
+  },
 };
 
 export default function ProductsPage() {

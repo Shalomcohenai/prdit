@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: "Careers",
   description:
     "Join prd.it - we're hiring engineers in Herzliya, Israel and growth roles in San Francisco, USA. Build the future of AI-powered developer tools.",
+  alternates: {
+    canonical: "/careers",
+  },
 };
 
 export default function CareersPage() {

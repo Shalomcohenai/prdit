@@ -24,7 +24,11 @@ export const metadata: Metadata = {
   description:
     "prd.it is a global AI and product engineering company building specification-first developer tools. Explore Specifys AI, Rift Code, and GreenPRD.",
   metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
+    url: SITE_URL,
     type: "website",
     locale: "en_US",
     siteName: "prd.it",

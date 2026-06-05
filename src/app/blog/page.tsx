@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Blog",
   description:
     "Insights on AI-powered development, specification-first workflows, code intelligence, and the future of developer tooling from the prd.it team.",
+  alternates: {
+    canonical: "/blog",
+  },
 };
 
 const ctaLabels: Record<string, string> = {
