@@ -21,14 +21,6 @@ export const metadata: Metadata = {
     title: "Careers | prd.it",
     description:
       "Join prd.it - we're hiring engineers in Herzliya, Israel and growth roles in San Francisco, USA. Build the future of AI-powered developer tools.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Careers at prd.it",
-      },
-    ],
   },
 };
 

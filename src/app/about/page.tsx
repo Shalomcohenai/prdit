@@ -19,14 +19,6 @@ export const metadata: Metadata = {
     title: "About | prd.it",
     description:
       "prd.it was founded to close the gap between product vision and code-especially as AI-generated code outpaces what developers can truly understand.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "About prd.it",
-      },
-    ],
   },
 };
 

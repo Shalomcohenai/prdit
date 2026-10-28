@@ -36,14 +36,6 @@ export const metadata: Metadata = {
     title: "prd.it - AI-Powered Product Engineering",
     description:
       "Building the future of specification-first development with Specifys AI, Rift Code, GreenPRD, and AdPulse.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "prd.it - AI-Powered Product Engineering",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",

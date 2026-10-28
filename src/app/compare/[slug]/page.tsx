@@ -37,14 +37,6 @@ export async function generateMetadata({
       url: `${SITE_URL}/compare/${slug}`,
       title: comparison.title,
       description: comparison.metaDescription,
-      images: [
-        {
-          url: "/og-image.png",
-          width: 1200,
-          height: 630,
-          alt: comparison.title,
-        },
-      ],
     },
   };
 }
@@ -62,7 +54,6 @@ export default async function ComparePage({
 
   const breadcrumbItems = [
     { name: "Home", url: SITE_URL },
-    { name: "Compare", url: `${SITE_URL}/products` },
     { name: comparison.title, url: `${SITE_URL}/compare/${slug}` },
   ];
 

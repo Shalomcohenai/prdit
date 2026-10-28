@@ -27,14 +27,6 @@ export const metadata: Metadata = {
     title: "Products | prd.it",
     description:
       "Explore prd.it's product ecosystem: Specifys AI for PRD generation, Rift Code for repository intelligence, GreenPRD for live generative blueprints, and AdPulse for AI ad creatives.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "prd.it Products",
-      },
-    ],
   },
 };
 

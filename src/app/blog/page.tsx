@@ -20,14 +20,6 @@ export const metadata: Metadata = {
     title: "Blog | prd.it",
     description:
       "Insights on AI-powered development, specification-first workflows, code intelligence, and the future of developer tooling from the prd.it team.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "prd.it Blog",
-      },
-    ],
   },
 };
 

@@ -38,14 +38,6 @@ export async function generateMetadata({
       description: post.excerpt,
       type: "article",
       publishedTime: new Date(post.date).toISOString(),
-      images: [
-        {
-          url: "/og-image.png",
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
     },
   };
 }
