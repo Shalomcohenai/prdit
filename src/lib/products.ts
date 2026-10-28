@@ -25,7 +25,7 @@ export const products: Product[] = [
     homeSummary: "The market-leading tool for structured software planning and PRDs.",
     description:
       "An advanced AI-powered platform tailored for creating production-ready Product Requirements Documents (PRDs) and software architecture specifications. It prevents the common 'vibe coding patchwork trap' by forcing structured, LLM-optimized logic and system constraints before any code generation begins.",
-    url: "https://specifys-ai.com/",
+    url: "https://www.specifys-ai.com/",
     images: {
       icon: "/images/products/specifys/icon.png",
       logo: "/images/products/specifys/logo.png",
@@ -126,5 +126,36 @@ export const products: Product[] = [
     ],
     ctaLabel: "Try GreenPRD",
     gradient: "from-emerald-500 to-green-500",
+  },
+  {
+    id: "adpulse",
+    name: "AdPulse",
+    tagline: "AI-Powered Ad Creative Studio",
+    homeSummary: "Generate high-converting ad creatives with AI-driven insights.",
+    description:
+      "AdPulse is an AI-powered ad creative tool that helps marketers and agencies create, test, and optimize ad campaigns across multiple platforms. Leverage machine learning to generate compelling visuals and copy that resonate with your target audience.",
+    url: "https://www.adpulse-studio.com",
+    images: {
+      icon: "/images/products/adpulse/icon.png",
+      logo: "/images/products/adpulse/logo.png",
+      banner: "/images/products/adpulse/banner.png",
+    },
+    screenshots: [],
+    features: [
+      "AI-generated ad creatives",
+      "Multi-platform campaign support",
+      "A/B testing & performance insights",
+      "Brand consistency tools",
+      "Real-time creative optimization",
+      "Export to major ad platforms",
+    ],
+    techSpecs: [
+      "AI-driven creative generation",
+      "Multi-format export",
+      "Campaign analytics dashboard",
+      "Team collaboration features",
+    ],
+    ctaLabel: "Try AdPulse",
+    gradient: "from-orange-500 to-red-500",
   },
 ];

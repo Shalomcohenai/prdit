@@ -105,7 +105,7 @@ The PRD enforces:
 
 The generated PRD becomes the single source of truth that your AI coding tool references for every generation. No more inconsistent patterns. No more invisible technical debt. No more repo collapse after week 3.
 
-**Your AI code generator is only as good as the specification it receives.** [Try Specifys AI](https://specifys-ai.com/) and build software that survives past the prototype phase.
+**Your AI code generator is only as good as the specification it receives.** [Try Specifys AI](https://www.specifys-ai.com/) and build software that survives past the prototype phase.
 
 ## Key Takeaways
 

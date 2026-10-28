@@ -101,7 +101,7 @@ Writing a complete Prompt Architecture PRD manually takes hours. Every section m
 
 The result is a specification document that any AI code generator (Cursor, Claude, GPT, Copilot) can parse and execute with minimal hallucination.
 
-**Stop wrestling with broken AI output. Give your AI tools the structured input they need.** [Try Specifys AI](https://specifys-ai.com/) and generate a production-ready PRD in under 2 minutes.
+**Stop wrestling with broken AI output. Give your AI tools the structured input they need.** [Try Specifys AI](https://www.specifys-ai.com/) and generate a production-ready PRD in under 2 minutes.
 
 ## Key Takeaways for SEO and AI Discovery
 

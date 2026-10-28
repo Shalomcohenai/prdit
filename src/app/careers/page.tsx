@@ -3,10 +3,11 @@ import { Building2 } from "lucide-react";
 import { getActiveJobs } from "@/utils/content";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import { JsonLd, generateJobPostingSchema } from "@/utils/seo";
+import { JsonLd, generateJobPostingSchema, generateBreadcrumbSchema } from "@/utils/seo";
 import { FadeInClient } from "@/components/home-animations";
 import { CareersFilter } from "@/components/careers-filter";
 import { ContactForm } from "@/components/contact-form";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Careers",
@@ -15,10 +16,28 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/careers",
   },
+  openGraph: {
+    url: `${SITE_URL}/careers`,
+    title: "Careers | prd.it",
+    description:
+      "Join prd.it - we're hiring engineers in Herzliya, Israel and growth roles in San Francisco, USA. Build the future of AI-powered developer tools.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Careers at prd.it",
+      },
+    ],
+  },
 };
 
 export default function CareersPage() {
   const jobs = getActiveJobs();
+  const breadcrumbItems = [
+    { name: "Home", url: SITE_URL },
+    { name: "Careers", url: `${SITE_URL}/careers` },
+  ];
 
   const jobsForSchema = jobs.map((job) => ({
     title: job.title,
@@ -30,6 +49,7 @@ export default function CareersPage() {
 
   return (
     <>
+      <JsonLd data={generateBreadcrumbSchema(breadcrumbItems)} />
       {jobsForSchema.map((job, i) => (
         <JsonLd key={i} data={generateJobPostingSchema(job)} />
       ))}

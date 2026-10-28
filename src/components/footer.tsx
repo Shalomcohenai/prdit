@@ -2,9 +2,10 @@ import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 
 const productLinks = [
-  { href: "https://specifys-ai.com/", label: "Specifys AI" },
+  { href: "https://www.specifys-ai.com/", label: "Specifys AI" },
   { href: "https://rift-code.com/", label: "Rift Code" },
   { href: "https://greenprd.com", label: "GreenPRD" },
+  { href: "https://www.adpulse-studio.com", label: "AdPulse" },
 ];
 
 const companyLinks = [

@@ -7,8 +7,9 @@ import { products } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { JsonLd, generateArticleSchema } from "@/utils/seo";
+import { JsonLd, generateArticleSchema, generateBreadcrumbSchema } from "@/utils/seo";
 import { MarkdownRenderer } from "@/components/markdown-renderer";
+import { SITE_URL } from "@/lib/site";
 
 type Params = Promise<{ slug: string }>;
 
@@ -32,10 +33,19 @@ export async function generateMetadata({
       canonical: `/blog/${slug}`,
     },
     openGraph: {
+      url: `${SITE_URL}/blog/${slug}`,
       title: post.title,
       description: post.excerpt,
       type: "article",
       publishedTime: new Date(post.date).toISOString(),
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
     },
   };
 }
@@ -59,8 +69,15 @@ export default async function BlogPostPage({
     content: post.content,
   };
 
+  const breadcrumbItems = [
+    { name: "Home", url: SITE_URL },
+    { name: "Blog", url: `${SITE_URL}/blog` },
+    { name: post.title, url: `${SITE_URL}/blog/${slug}` },
+  ];
+
   return (
     <>
+      <JsonLd data={generateBreadcrumbSchema(breadcrumbItems)} />
       <JsonLd data={generateArticleSchema(articleData)} />
 
       <div className="py-24">

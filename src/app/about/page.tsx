@@ -4,6 +4,8 @@ import { ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { FadeInClient } from "@/components/home-animations";
+import { SITE_URL } from "@/lib/site";
+import { JsonLd, generateBreadcrumbSchema } from "@/utils/seo";
 
 export const metadata: Metadata = {
   title: "About",
@@ -11,6 +13,20 @@ export const metadata: Metadata = {
     "prd.it was founded to close the gap between product vision and code-especially as AI-generated code outpaces what developers can truly understand.",
   alternates: {
     canonical: "/about",
+  },
+  openGraph: {
+    url: `${SITE_URL}/about`,
+    title: "About | prd.it",
+    description:
+      "prd.it was founded to close the gap between product vision and code-especially as AI-generated code outpaces what developers can truly understand.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "About prd.it",
+      },
+    ],
   },
 };
 
@@ -32,8 +48,14 @@ function ProseSection({
 }
 
 export default function AboutPage() {
+  const breadcrumbItems = [
+    { name: "Home", url: SITE_URL },
+    { name: "About", url: `${SITE_URL}/about` },
+  ];
+
   return (
     <>
+      <JsonLd data={generateBreadcrumbSchema(breadcrumbItems)} />
       <section className="py-24">
         <div className="mx-auto max-w-3xl px-6">
           <FadeInClient>
