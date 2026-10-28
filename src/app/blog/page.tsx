@@ -5,6 +5,8 @@ import { getAllBlogPosts } from "@/utils/content";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FadeInClient, StaggerClient, StaggerItemClient } from "@/components/home-animations";
+import { SITE_URL } from "@/lib/site";
+import { JsonLd, generateBreadcrumbSchema } from "@/utils/seo";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -12,6 +14,12 @@ export const metadata: Metadata = {
     "Insights on AI-powered development, specification-first workflows, code intelligence, and the future of developer tooling from the prd.it team.",
   alternates: {
     canonical: "/blog",
+  },
+  openGraph: {
+    url: `${SITE_URL}/blog`,
+    title: "Blog | prd.it",
+    description:
+      "Insights on AI-powered development, specification-first workflows, code intelligence, and the future of developer tooling from the prd.it team.",
   },
 };
 
@@ -23,9 +31,15 @@ const ctaLabels: Record<string, string> = {
 
 export default function BlogPage() {
   const posts = getAllBlogPosts();
+  const breadcrumbItems = [
+    { name: "Home", url: SITE_URL },
+    { name: "Blog", url: `${SITE_URL}/blog` },
+  ];
 
   return (
-    <section className="py-24">
+    <>
+      <JsonLd data={generateBreadcrumbSchema(breadcrumbItems)} />
+      <section className="py-24">
       <div className="mx-auto max-w-7xl px-6">
         <FadeInClient>
           <div className="text-center">
@@ -85,5 +99,6 @@ export default function BlogPage() {
         </StaggerClient>
       </div>
     </section>
+    </>
   );
 }

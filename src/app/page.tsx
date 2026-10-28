@@ -42,7 +42,7 @@ export default function HomePage() {
             </div>
           </ScrollReveal>
 
-          <StaggerClient className="mt-16 grid gap-6 md:grid-cols-3">
+          <StaggerClient className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {products.map((product) => (
               <StaggerItemClient key={product.id}>
                 <Card className="group relative h-full overflow-hidden font-sans transition-all duration-300 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]">

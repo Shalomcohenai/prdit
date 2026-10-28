@@ -5,9 +5,11 @@ import { products } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { SITE_URL } from "@/lib/site";
 import {
   JsonLd,
   generateSoftwareApplicationSchema,
+  generateBreadcrumbSchema,
 } from "@/utils/seo";
 import { FadeInClient } from "@/components/home-animations";
 import { ProductScreenshots } from "@/components/product-screenshots";
@@ -16,15 +18,27 @@ import { ProductIcon } from "@/components/product-icon";
 export const metadata: Metadata = {
   title: "Products",
   description:
-    "Explore prd.it's product ecosystem: Specifys AI for PRD generation, Rift Code for repository intelligence, and GreenPRD for live generative blueprints.",
+    "Explore prd.it's product ecosystem: Specifys AI for PRD generation, Rift Code for repository intelligence, GreenPRD for live generative blueprints, and AdPulse for AI ad creatives.",
   alternates: {
     canonical: "/products",
+  },
+  openGraph: {
+    url: `${SITE_URL}/products`,
+    title: "Products | prd.it",
+    description:
+      "Explore prd.it's product ecosystem: Specifys AI for PRD generation, Rift Code for repository intelligence, GreenPRD for live generative blueprints, and AdPulse for AI ad creatives.",
   },
 };
 
 export default function ProductsPage() {
+  const breadcrumbItems = [
+    { name: "Home", url: SITE_URL },
+    { name: "Products", url: `${SITE_URL}/products` },
+  ];
+
   return (
     <>
+      <JsonLd data={generateBreadcrumbSchema(breadcrumbItems)} />
       {products.map((product) => (
         <JsonLd
           key={product.id}

@@ -25,7 +25,7 @@ export const products: Product[] = [
     homeSummary: "The market-leading tool for structured software planning and PRDs.",
     description:
       "An advanced AI-powered platform tailored for creating production-ready Product Requirements Documents (PRDs) and software architecture specifications. It prevents the common 'vibe coding patchwork trap' by forcing structured, LLM-optimized logic and system constraints before any code generation begins.",
-    url: "https://specifys-ai.com/",
+    url: "https://www.specifys-ai.com/",
     images: {
       icon: "/images/products/specifys/icon.png",
       logo: "/images/products/specifys/logo.png",
@@ -126,5 +126,36 @@ export const products: Product[] = [
     ],
     ctaLabel: "Try GreenPRD",
     gradient: "from-emerald-500 to-green-500",
+  },
+  {
+    id: "adpulse",
+    name: "AdPulse",
+    tagline: "AI Ad Creative Generator for SaaS",
+    homeSummary: "Stop shipping generic AI posts. Create on-brand LinkedIn, Instagram, TikTok, and social ads that stay true to your brand.",
+    description:
+      "AdPulse is the SaaS ad creative generator. It connects product context, audience research, AI creative generation, multi-network social publishing, and performance insights in one closed-loop workflow. Teams import a product URL, analyze audiences, generate on-brand ads for LinkedIn, Instagram, TikTok, and more, then use insights to improve the next campaign cycle.",
+    url: "https://www.adpulse-studio.com",
+    images: {
+      icon: "/images/products/adpulse/icon.png",
+      logo: "/images/products/adpulse/logo.png",
+      banner: "/images/products/adpulse/banner.png",
+    },
+    screenshots: [],
+    features: [
+      "Product Context Hub: import and maintain canonical product knowledge",
+      "Audience Analysis: segment audiences, map pain points, monitor competitors",
+      "Content Generator: AI-powered on-brand creative assets",
+      "Social Publish: dispatch assets to connected social channels",
+      "Performance Insights: analyze metrics and close the feedback loop",
+      "Content Library: browse and manage generated creatives",
+    ],
+    techSpecs: [
+      "Closed-loop ad workflow",
+      "Multi-network social publishing",
+      "Product URL import",
+      "AI creative generation",
+    ],
+    ctaLabel: "Try AdPulse",
+    gradient: "from-orange-500 to-red-500",
   },
 ];

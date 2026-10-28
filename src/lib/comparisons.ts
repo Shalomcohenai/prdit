@@ -31,7 +31,7 @@ export const comparisons: Comparison[] = [
     ourProduct: {
       name: "Specifys AI",
       id: "specifys",
-      url: "https://specifys-ai.com/",
+      url: "https://www.specifys-ai.com/",
     },
     competitor: {
       name: "Notion",

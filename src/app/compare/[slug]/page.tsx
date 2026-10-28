@@ -9,6 +9,8 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FadeInClient, StaggerClient, StaggerItemClient } from "@/components/home-animations";
 import { cn } from "@/lib/utils";
+import { SITE_URL } from "@/lib/site";
+import { JsonLd, generateBreadcrumbSchema } from "@/utils/seo";
 
 type Params = Promise<{ slug: string }>;
 
@@ -31,6 +33,11 @@ export async function generateMetadata({
     alternates: {
       canonical: `/compare/${slug}`,
     },
+    openGraph: {
+      url: `${SITE_URL}/compare/${slug}`,
+      title: comparison.title,
+      description: comparison.metaDescription,
+    },
   };
 }
 
@@ -45,8 +52,15 @@ export default async function ComparePage({
 
   const product = products.find((p) => p.id === comparison.ourProduct.id);
 
+  const breadcrumbItems = [
+    { name: "Home", url: SITE_URL },
+    { name: comparison.title, url: `${SITE_URL}/compare/${slug}` },
+  ];
+
   return (
-    <section className="py-24">
+    <>
+      <JsonLd data={generateBreadcrumbSchema(breadcrumbItems)} />
+      <section className="py-24">
       <div className="mx-auto max-w-5xl px-6">
         <FadeInClient>
           <div className="text-center">
@@ -178,5 +192,6 @@ export default async function ComparePage({
         </FadeInClient>
       </div>
     </section>
+    </>
   );
 }

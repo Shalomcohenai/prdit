@@ -42,7 +42,12 @@ export function generateOrganizationSchema() {
         description: "Growth Office",
       },
     ],
-    sameAs: ["https://specifys-ai.com/", "https://rift-code.com/", "https://greenprd.com"],
+    sameAs: [
+      "https://www.specifys-ai.com/",
+      "https://rift-code.com/",
+      "https://greenprd.com",
+      "https://www.adpulse-studio.com",
+    ],
   };
 }
 
@@ -124,6 +129,19 @@ export function generateSoftwareApplicationSchema(product: Product) {
       name: "prd.it",
       url: SITE_URL,
     },
+  };
+}
+
+export function generateBreadcrumbSchema(items: { name: string; url: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
   };
 }
 

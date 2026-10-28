@@ -10,7 +10,7 @@ The primary objective of the `prd.it` corporate portal is to act as a premium, h
 ## 2. The Core Product Portfolio
 
 ### Product A: Specifys AI
-- **URL:** https://specifys-ai.com/
+- **URL:** https://www.specifys-ai.com/
 - **Niche/Function:** An advanced AI-powered platform tailored for creating production-ready Product Requirements Documents (PRDs) and software architecture specifications. It prevents the common "vibe coding patchwork trap" by forcing structured, LLM-optimized logic and system constraints before any code generation begins.
 
 ### Product B: Rift Code

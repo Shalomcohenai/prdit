@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | prd.it",
   },
   description:
-    "prd.it is a global AI and product engineering company building specification-first developer tools. Explore Specifys AI, Rift Code, and GreenPRD.",
+    "prd.it is a global AI and product engineering company building specification-first developer tools. Explore Specifys AI, Rift Code, GreenPRD, and AdPulse.",
   metadataBase: new URL(SITE_URL),
   alternates: {
     canonical: "/",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "prd.it",
     title: "prd.it - AI-Powered Product Engineering",
     description:
-      "Building the future of specification-first development with Specifys AI, Rift Code, and GreenPRD.",
+      "Building the future of specification-first development with Specifys AI, Rift Code, GreenPRD, and AdPulse.",
   },
   twitter: {
     card: "summary_large_image",
