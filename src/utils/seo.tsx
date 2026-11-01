@@ -132,6 +132,30 @@ export function generateSoftwareApplicationSchema(product: Product) {
   };
 }
 
+export function generateBlogSchema(
+  posts: { title: string; slug: string; date: string }[],
+  meta: { name: string; description: string }
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: meta.name,
+    description: meta.description,
+    url: `${SITE_URL}/blog`,
+    publisher: {
+      "@type": "Organization",
+      name: "prd.it",
+      url: SITE_URL,
+    },
+    blogPost: posts.map((post) => ({
+      "@type": "BlogPosting",
+      headline: post.title,
+      url: `${SITE_URL}/blog/${post.slug}`,
+      datePublished: post.date,
+    })),
+  };
+}
+
 export function generateBreadcrumbSchema(items: { name: string; url: string }[]) {
   return {
     "@context": "https://schema.org",

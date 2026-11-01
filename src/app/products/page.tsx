@@ -15,18 +15,20 @@ import { FadeInClient } from "@/components/home-animations";
 import { ProductScreenshots } from "@/components/product-screenshots";
 import { ProductIcon } from "@/components/product-icon";
 
+const PRODUCTS_TITLE = "AI Tools: Specifys, Rift Code, GreenPRD & AdPulse";
+const PRODUCTS_DESCRIPTION =
+  "Specifys AI, Rift Code, GreenPRD, and AdPulse: spec-first PRDs, repository intelligence, visual MCP workspaces, and on-brand ad creatives.";
+
 export const metadata: Metadata = {
-  title: "Products",
-  description:
-    "Explore prd.it's product ecosystem: Specifys AI for PRD generation, Rift Code for repository intelligence, GreenPRD for live generative blueprints, and AdPulse for AI ad creatives.",
+  title: PRODUCTS_TITLE,
+  description: PRODUCTS_DESCRIPTION,
   alternates: {
     canonical: "/products",
   },
   openGraph: {
     url: `${SITE_URL}/products`,
-    title: "Products | prd.it",
-    description:
-      "Explore prd.it's product ecosystem: Specifys AI for PRD generation, Rift Code for repository intelligence, GreenPRD for live generative blueprints, and AdPulse for AI ad creatives.",
+    title: `${PRODUCTS_TITLE} | prd.it`,
+    description: PRODUCTS_DESCRIPTION,
   },
 };
 
