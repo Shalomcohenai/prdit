@@ -23,7 +23,10 @@ export function GET() {
     ),
     "",
     "## Blog Articles",
-    ...posts.map((p) => `- [${p.title}](${SITE_URL}/blog/${p.slug}): ${p.excerpt}`),
+    ...posts.map(
+      (p) =>
+        `- [${p.title}](${SITE_URL}/blog/${p.slug}): ${p.summary.replace(/\s+/g, " ").trim()}`
+    ),
     "",
     "## Open Positions",
     ...jobs.map((j) => `- ${j.title} (${j.department}) - ${j.location}`),

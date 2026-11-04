@@ -140,3 +140,11 @@ body {
   margin-bottom: 1rem;
   padding-left: 1.5rem;
 }
+
+.prose-dark ul {
+  list-style: disc;
+}
+
+.prose-dark ol {
+  list-style: decimal;
+}

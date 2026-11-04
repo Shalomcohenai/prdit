@@ -2,6 +2,7 @@
 title: "The Death of Prompt Engineering: Why Visual Workflows Are the Future of Autonomous Coding"
 slug: "death-of-prompt-engineering-visual-workflows"
 excerpt: "Prompt engineering is a transitional skill. The future of AI-assisted development is visual workflow composition - drawing logic, not writing instructions. Here is why the shift is inevitable."
+summary: "Visual workflow composition replaces long prompt transcripts once the work is a graph of states, tools, and constraints."
 date: "2026-05-20"
 category: "AI Strategy"
 targetProductCTA: "greenprd"

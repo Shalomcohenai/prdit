@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
-import { getAllNews } from "@/utils/content";
+import { getAllBlogPosts, getAllNews } from "@/utils/content";
 import { products } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -19,6 +19,7 @@ import { ProductIcon } from "@/components/product-icon";
 
 export default function HomePage() {
   const news = getAllNews().slice(0, 3);
+  const posts = getAllBlogPosts();
 
   return (
     <>
@@ -78,6 +79,51 @@ export default function HomePage() {
               </StaggerItemClient>
             ))}
           </StaggerClient>
+        </div>
+      </section>
+
+      <section className="border-t border-white/5 py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <Badge variant="outline" className="mb-4">From the blog</Badge>
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Every essay
+          </h2>
+          <p className="mt-4 max-w-2xl text-neutral-400">
+            Spec-first PRDs, the Model Context Protocol, and code intelligence
+            for generated repositories. The full archive is linked here.
+          </p>
+          <ul className="mt-10 divide-y divide-white/10 border-y border-white/10">
+            {posts.map((post) => (
+              <li key={post.slug}>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="group flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8"
+                >
+                  <span className="text-base font-medium text-white group-hover:text-blue-400">
+                    {post.title}
+                  </span>
+                  <time
+                    dateTime={post.date}
+                    className="text-sm text-neutral-500 sm:shrink-0"
+                  >
+                    {new Date(`${post.date}T00:00:00.000Z`).toLocaleDateString("en-US", {
+                      month: "short",
+                      day: "numeric",
+                      year: "numeric",
+                      timeZone: "UTC",
+                    })}
+                  </time>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-8">
+            <Link href="/blog">
+              <Button variant="outline" size="sm">
+                Read the blog <ArrowRight className="h-3 w-3" />
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
 
