@@ -5,8 +5,7 @@ import { getAllBlogPosts, type BlogPost } from "@/utils/content";
 import { products } from "@/lib/products";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { StaggerClient, StaggerItemClient } from "@/components/home-animations";
-import { SITE_URL } from "@/lib/site";
+import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { JsonLd, generateBlogSchema, generateBreadcrumbSchema } from "@/utils/seo";
 
 const BLOG_TITLE = "AI Product Engineering Blog: PRDs, MCP & Code Intelligence";
@@ -17,10 +16,10 @@ export const metadata: Metadata = {
   title: BLOG_TITLE,
   description: BLOG_DESCRIPTION,
   alternates: {
-    canonical: "/blog",
+    canonical: absoluteUrl("/blog"),
   },
   openGraph: {
-    url: `${SITE_URL}/blog`,
+    url: absoluteUrl("/blog"),
     title: `${BLOG_TITLE} | prd.it`,
     description: BLOG_DESCRIPTION,
   },
@@ -59,47 +58,48 @@ function ProductAnchor({
 
 function PostGrid({ posts }: { posts: BlogPost[] }) {
   return (
-    <StaggerClient className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {posts.map((post) => (
-        <StaggerItemClient key={post.slug}>
-          <Link href={`/blog/${post.slug}`}>
-            <Card className="group h-full transition-all duration-300 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]">
-              <CardHeader>
-                <div className="mb-2 flex items-center gap-3">
-                  <Badge variant="secondary" className="text-xs">
-                    {post.category}
-                  </Badge>
-                  <Badge variant="outline" className="text-xs">
-                    {ctaLabels[post.targetProductCTA] ?? post.targetProductCTA}
-                  </Badge>
-                </div>
-                <CardTitle className="text-lg leading-snug text-white group-hover:text-blue-400 transition-colors">
-                  {post.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="mb-4 text-sm leading-relaxed text-neutral-400">
-                  {post.excerpt}
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="flex items-center gap-1 text-xs text-neutral-500">
-                    <Calendar className="h-3 w-3" />
-                    {new Date(post.date).toLocaleDateString("en-US", {
+        <Link key={post.slug} href={`/blog/${post.slug}`} className="block h-full">
+          <Card className="group h-full transition-all duration-300 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+            <CardHeader>
+              <div className="mb-2 flex items-center gap-3">
+                <Badge variant="secondary" className="text-xs">
+                  {post.category}
+                </Badge>
+                <Badge variant="outline" className="text-xs">
+                  {ctaLabels[post.targetProductCTA] ?? post.targetProductCTA}
+                </Badge>
+              </div>
+              <CardTitle className="text-lg leading-snug text-white group-hover:text-blue-400 transition-colors">
+                {post.title}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="mb-4 text-sm leading-relaxed text-neutral-400">
+                {post.excerpt}
+              </p>
+              <div className="flex items-center justify-between">
+                <span className="flex items-center gap-1 text-xs text-neutral-500">
+                  <Calendar className="h-3 w-3" />
+                  <time dateTime={post.date}>
+                    {new Date(`${post.date}T00:00:00.000Z`).toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
                       year: "numeric",
+                      timeZone: "UTC",
                     })}
-                  </span>
-                  <span className="flex items-center gap-1 text-xs text-blue-400 opacity-0 transition-opacity group-hover:opacity-100">
-                    Read More <ArrowRight className="h-3 w-3" />
-                  </span>
-                </div>
-              </CardContent>
-            </Card>
-          </Link>
-        </StaggerItemClient>
+                  </time>
+                </span>
+                <span className="flex items-center gap-1 text-xs text-blue-400 opacity-0 transition-opacity group-hover:opacity-100">
+                  Read More <ArrowRight className="h-3 w-3" />
+                </span>
+              </div>
+            </CardContent>
+          </Card>
+        </Link>
       ))}
-    </StaggerClient>
+    </div>
   );
 }
 

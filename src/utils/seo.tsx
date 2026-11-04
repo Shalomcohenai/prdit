@@ -5,8 +5,14 @@ interface ArticleData {
   title: string;
   slug: string;
   excerpt: string;
-  publishedAt: Date;
-  content: string;
+  datePublished: string;
+  dateModified: string;
+  image: string;
+}
+
+interface FaqItem {
+  question: string;
+  answer: string;
 }
 
 interface JobData {
@@ -51,15 +57,17 @@ export function generateOrganizationSchema() {
   };
 }
 
-export function generateArticleSchema(article: ArticleData) {
+export function generateBlogPostingSchema(article: ArticleData) {
+  const url = `${SITE_URL}/blog/${article.slug}`;
   return {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: article.title,
     description: article.excerpt,
-    url: `${SITE_URL}/blog/${article.slug}`,
-    datePublished: article.publishedAt.toISOString(),
-    dateModified: article.publishedAt.toISOString(),
+    image: [article.image],
+    url,
+    datePublished: article.datePublished,
+    dateModified: article.dateModified,
     author: {
       "@type": "Organization",
       name: "prd.it",
@@ -76,8 +84,23 @@ export function generateArticleSchema(article: ArticleData) {
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${SITE_URL}/blog/${article.slug}`,
+      "@id": url,
     },
+  };
+}
+
+export function generateFaqSchema(items: FaqItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
   };
 }
 
@@ -133,7 +156,7 @@ export function generateSoftwareApplicationSchema(product: Product) {
 }
 
 export function generateBlogSchema(
-  posts: { title: string; slug: string; date: string }[],
+  posts: { title: string; slug: string; date: string; updated?: string }[],
   meta: { name: string; description: string }
 ) {
   return {
@@ -152,6 +175,7 @@ export function generateBlogSchema(
       headline: post.title,
       url: `${SITE_URL}/blog/${post.slug}`,
       datePublished: post.date,
+      dateModified: post.updated ?? post.date,
     })),
   };
 }

@@ -2,6 +2,7 @@
 title: "Why Text-Based Code Reviews Are Broken (And How Visual Intelligence Fixes It)"
 slug: "visual-code-reviews-broken-text-diffs"
 excerpt: "Traditional GitHub PR diffs show lines of text but hide architectural impact. Learn why visual code analysis is replacing text-based reviews for modern engineering teams."
+summary: "A line diff shows the text that changed; a visual review shows which boundaries and dependents that change affects."
 date: "2026-05-22"
 category: "Engineering Practices"
 targetProductCTA: "riftcode"

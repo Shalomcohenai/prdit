@@ -2,6 +2,7 @@
 title: "The MCP Revolution: How Model Context Protocol Changes IDE Workflows"
 slug: "mcp-revolution-ide-workflows"
 excerpt: "Understanding the Model Context Protocol and how visual workflow builders are reshaping developer tooling."
+summary: "Model Context Protocol gives an IDE a standard way to call tools, and visual builders are how teams compose those tools."
 date: "2026-05-10"
 category: "ai-tooling"
 targetProductCTA: "greenprd"

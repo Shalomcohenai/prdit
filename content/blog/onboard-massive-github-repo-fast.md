@@ -2,6 +2,7 @@
 title: "How to Onboard Onto a Massive, Messy GitHub Repo in Under 5 Minutes"
 slug: "onboard-massive-github-repo-fast"
 excerpt: "Stop spending days reading files. Learn a systematic approach to understanding large codebases instantly using AI-powered visual architecture maps and repository intelligence tools."
+summary: "Read a large GitHub repo from its entry points and dependency edges so onboarding starts from the map, then the files."
 date: "2026-05-23"
 category: "Developer Productivity"
 targetProductCTA: "riftcode"

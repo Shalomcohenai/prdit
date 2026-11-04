@@ -11,13 +11,24 @@ const blogDir = path.join(contentDir, "blog");
 
 export type TargetProductCTA = "specifys" | "riftcode" | "greenprd";
 
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
 export interface BlogPost {
   title: string;
   slug: string;
   excerpt: string;
+  summary: string;
+  tldr?: string;
   date: string;
+  updated?: string;
   category: string;
   targetProductCTA: TargetProductCTA;
+  faq: FaqItem[];
+  related: string[];
+  relatedProducts: string[];
   content: string;
 }
 
@@ -51,13 +62,20 @@ export function getAllBlogPosts(): BlogPost[] {
   const posts = files.map((file) => {
     const raw = fs.readFileSync(path.join(blogDir, file), "utf-8");
     const { data, content } = matter(raw);
+    const excerpt = asString(data.excerpt);
     return {
-      title: data.title as string,
-      slug: data.slug as string,
-      excerpt: data.excerpt as string,
-      date: data.date as string,
-      category: data.category as string,
-      targetProductCTA: data.targetProductCTA as TargetProductCTA,
+      title: asString(data.title),
+      slug: asString(data.slug),
+      excerpt,
+      summary: asString(data.summary) || excerpt,
+      tldr: asString(data.tldr) || undefined,
+      date: asDateString(data.date),
+      updated: asDateString(data.updated) || undefined,
+      category: asString(data.category),
+      targetProductCTA: asString(data.targetProductCTA) as TargetProductCTA,
+      faq: asFaq(data.faq),
+      related: asStringList(data.related),
+      relatedProducts: asStringList(data.relatedProducts),
       content: content.trim(),
     };
   });
@@ -103,4 +121,33 @@ export function getAllJobs(): JobOpening[] {
 
 export function getActiveJobs(): JobOpening[] {
   return getAllJobs().filter((j) => j.active);
+}
+
+function asString(value: unknown): string {
+  return typeof value === "string" ? value.trim() : "";
+}
+
+function asDateString(value: unknown): string {
+  if (value instanceof Date && !Number.isNaN(value.getTime())) {
+    return value.toISOString().slice(0, 10);
+  }
+  return asString(value);
+}
+
+function asStringList(value: unknown): string[] {
+  if (!Array.isArray(value)) return [];
+  return value.filter(
+    (item): item is string => typeof item === "string" && item.trim().length > 0
+  );
+}
+
+function asFaq(value: unknown): FaqItem[] {
+  if (!Array.isArray(value)) return [];
+  return value.flatMap((item) => {
+    if (!item || typeof item !== "object") return [];
+    const question = asString((item as { question?: unknown }).question);
+    const answer = asString((item as { answer?: unknown }).answer);
+    if (!question || !answer) return [];
+    return [{ question, answer }];
+  });
 }
